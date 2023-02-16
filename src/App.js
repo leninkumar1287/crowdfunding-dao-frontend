@@ -1,13 +1,25 @@
-import './App.css';
-
+import { BrowserRouter, Routes } from "react-router-dom";
+import { useConnection } from './connectionProvider/connection_provider';
+import NavigationBar from "./components/navbar/NavigationBar";
 function App() {
+  const  {connectionState}  = useConnection();
+
+  const { error } = connectionState;
+
+  if (error) {
+    return <div className="backdrop"><p>{error}</p></div>
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-      <h1>Crowdfuding Dao Application</h1>
-      </header>
+      
+    <div>
+      <BrowserRouter>
+        <NavigationBar/>
+        <Routes>
+        </Routes>
+      </BrowserRouter>
     </div>
-  );
+  )
+
 }
 
 export default App;
