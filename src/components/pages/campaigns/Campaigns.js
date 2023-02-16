@@ -42,6 +42,9 @@ function Campaigns() {
         <div className="g-page">
             <div className="hr-flex">
                 <h3 className="heading">CrowdFunding Dao</h3>
+                <button className="clickable" onClick={() => { navigate('/campaigns/createCampaigns') }}>
+                    Create Campaigns
+                </button>
             </div>
             <div className="p-list">
                 {campaignsList.length === 0 ?
@@ -56,6 +59,7 @@ function Campaigns() {
                             <Box height="10" />
                             <div className="hr-flex-start">
                                 <p className="p-result" style={(campaigns.status === '0' || campaigns.status === '1' || campaigns.status === '2') ? { '--res-color': 'var(--primary)' } : { '--res-color': 'rgba(0,0,0,0.5)' }}>
+                                    {/*eslint-disable-next-line*/}
                                     {campaigns.status == 2 ? 'Pending' : `${campaigns.status == 0 ? 'Approved' : 'Pending'}`}</p>
                             </div>
                         </div>
