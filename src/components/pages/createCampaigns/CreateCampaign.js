@@ -47,10 +47,11 @@ function CreateCampaign(props) {
 
     const handleCampaignCreation = async () => {
 
-        if (window.confirm("Do you want to create a new proposal ?")) {
+        if (window.confirm("Do you want to create a new crowd funding campaign ?")) {
             setLoading(true);
             try {
-                let endDate = new Date(campaign.deadLine).getTime()
+                let endDate = new Date(campaign.deadLine)
+                endDate = endDate.getTime()/1000.0
                 await crowdFundingContract.methods.createCampaign(
                     campaign.companyName,
                     campaign.title,
@@ -80,9 +81,12 @@ function CreateCampaign(props) {
     }
 
     return (
-        <div className="container create-proposal">
+        <div className="container create-campaign">
+            <div className="back-btn" onClick={() => {
+                navigate(-1);
+            }}>← Back To Overview</div>
             <div className="heading title">Create Campaign</div>
-            <div className="proposal-box" >
+            <div className="campaign-box" >
                 <div>
                     <label>companyName</label>
                     <div className="textfield" >

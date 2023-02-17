@@ -3,6 +3,8 @@ import { useConnection } from './connectionProvider/connection_provider';
 import NavigationBar from "./components/navbar/NavigationBar";
 import Campaigns from "./components/pages/campaigns/Campaigns";
 import CreateCampaign from "./components/pages/createCampaigns/CreateCampaign";
+import CampainsView from "./components/pages/campaign_view_page/CampaignView.js"
+
 function App() {
   const  {connectionState}  = useConnection();
 
@@ -19,6 +21,8 @@ function App() {
         <Routes>
         <Route path="/" element={<Campaigns />} />
         <Route path="/campaigns/createCampaigns" element={<CreateCampaign/>} />
+        <Route path="/contribution/contribute/:index" element={<CampainsView/>} />
+
         </Routes>
       </BrowserRouter>
     </div>
