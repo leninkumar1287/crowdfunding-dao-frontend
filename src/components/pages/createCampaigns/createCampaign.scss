@@ -1,4 +1,4 @@
-.create-proposal {
+.create-campaign {
     height: calc(100vh - 70px);
     display: grid;
     place-content: right;
@@ -8,7 +8,7 @@
         margin-bottom: 20px;
     }
 
-    .proposal-box {
+    .campaign-box {
         display: flex;
         flex-direction: column;
         width: 700px;
