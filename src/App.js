@@ -21,7 +21,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Campaigns />} />
         <Route path="/campaigns/createCampaigns" element={<CreateCampaign/>} />
-        <Route path="/contribution/contribute/:index" element={<CampainsView/>} />
+        <Route path="/contribution/contribute/:index" element={<CampaignView/>} />
 
         </Routes>
       </BrowserRouter>
