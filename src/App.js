@@ -3,7 +3,7 @@ import { useConnection } from './connectionProvider/connection_provider';
 import NavigationBar from "./components/navbar/NavigationBar";
 import Campaigns from "./components/pages/campaigns/Campaigns";
 import CreateCampaign from "./components/pages/createCampaigns/CreateCampaign";
-import CampainsView from "./components/pages/campaign_view_page/CampaignView.js"
+import CampaignView from "./components/pages/campaign_view_page/CampaignView.js"
 
 function App() {
   const  {connectionState}  = useConnection();
