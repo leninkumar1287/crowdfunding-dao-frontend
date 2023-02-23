@@ -41,7 +41,7 @@ function NavigationaBar() {
                             } /> :
                             <Chip
                                 onclick={connectWallet}
-                                bgColor="var(--accent)" textColor="white"
+                                bgColor="var(--accent)" textColor="green"
                                 content="Connect Wallet"
                             />
                         }
@@ -49,8 +49,8 @@ function NavigationaBar() {
                         {accounts.length > 0 &&
                             <Chip
                                 onclick={DisconnectWallet}
-                                bgColor="var(--accent)" textColor="white"
-                                content="DisconnectWallet"
+                                bgColor="var(--accent)" textColor="red"
+                                content="Drop connection"
                         />}
                 </div>
             </nav>

@@ -24,6 +24,7 @@ function CampaignView() {
 
     const [campaign, setCampaign] = useState({
         company: "",
+        campaignId: "",
         title: "",
         creator: "",
         description: "",
@@ -49,6 +50,7 @@ function CampaignView() {
                 let company = await crowdFundingContract.methods.getCompany(response.contractAddress).call()
                 let totalSupply = Math.round(company.totalSupply / (10 ** 18));
                 setCampaign({
+                    campaignId: index,
                     company: response.companyName,
                     title: response.campaignTitle,
                     description: response.campaignDescription,
@@ -123,7 +125,7 @@ function CampaignView() {
     }
 
     const isDeadlinePassed = () => {
-        return parseInt(campaign.deadLine) * 1000 < Date.now()
+        return parseInt(campaign.deadLine) * 1000 < Math.floor(Date.now()/1000)
     }
 
     useEffect(() => {
@@ -145,7 +147,7 @@ function CampaignView() {
                 <div className="p-left">
                     <p className="heading">{campaign.title}</p>
                     {
-                        !isDeadlinePassed() &&
+                        isDeadlinePassed() &&
                         <div className="options">
                             <div className="option" ><div>Campaign deadline passed</div></div>
                         </div>
@@ -195,6 +197,11 @@ function CampaignView() {
                             {
                                 (!isDeadlinePassed() && admin === accounts[0] && states[2] === campaign.status) &&
                                 <button className='clickable' onClick={handleRejectCampaign}>Reject Campaign</button>
+                            }
+
+                            {
+                                (!isDeadlinePassed() && states[0] === campaign.status) &&
+                                <button className='clickable' onClick={() => { navigate(`/contribute/checkout/${campaign.campaignId}`) }}>Contribute to this Campaign</button>
                             }
                         </div>
                     )

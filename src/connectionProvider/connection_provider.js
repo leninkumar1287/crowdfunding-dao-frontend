@@ -106,7 +106,6 @@ export function ConnectionProvider(props) {
         if (window.ethereum) {
             // Detect metamask account change
             window.ethereum.on('accountsChanged', async function (_accounts) {
-                console.log("_accounts :", _accounts)
                 setConnectionState({ ...connectionState, accounts: _accounts })
                 connectWallet()
             })
