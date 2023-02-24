@@ -58,7 +58,7 @@ function CreateCampaign(props) {
                     campaign.description,
                     campaign.pricePerToken,
                     campaign.tokenName,
-                    endDate,
+                    Date.parse(campaign.deadLine)/1000,
                     campaign.target,
                     campaign.tokenSymbol,
                     campaign.totalSupply
@@ -153,7 +153,7 @@ function CreateCampaign(props) {
                     <div className="p-date" >
 
                         <input id="deadLine" name='deadLine' value={campaign.deadLine}
-                            onChange={dataHandlder} type="date"
+                            onChange={dataHandlder} type="datetime-local"
                             placeholder="Last date for this campaign" required />
                     </div>
                     <p className="error">{error.deadLine}</p>

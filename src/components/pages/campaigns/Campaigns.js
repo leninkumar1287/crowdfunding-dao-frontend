@@ -57,7 +57,7 @@ function Campaigns() {
                     <div className='subtitle' style={{ textAlign: 'center' }}>No Campaign Found</div>
                     : <div className="subtitle">All Campaigns</div>}
                 {campaignsList.map((campaigns, idx) => (
-                    <div key={idx} className="p-list-tile" onClick={() => { navigate(`/contribution/contribute/${campaigns.campaignId}`) }}>
+                    <div key={idx} className="p-list-tile" onClick={() => { navigate(`campaign/viewCampaign/${campaigns.campaignId}`) }}>
                         <div className="p-left">
                             <p className="p-title">Campaign Title : {campaigns.campaignTitle}</p>
                             <p className="p-title">Available Token :{Math.round(campaigns.heldBalance / (10 ** 18))}</p>
