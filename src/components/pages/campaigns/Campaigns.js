@@ -19,7 +19,7 @@ function Campaigns() {
     }
 
     const [campaignsList, setcampaignsList] = useState([]);
-    
+
     async function fetchData() {
         if (crowdFundingContract != null) {
             setLoading(true);
@@ -60,13 +60,18 @@ function Campaigns() {
                     <div key={idx} className="p-list-tile" onClick={() => { navigate(`campaign/viewCampaign/${campaigns.campaignId}`) }}>
                         <div className="p-left">
                             <p className="p-title">Campaign Title : {campaigns.campaignTitle}</p>
-                            <p className="p-title">Available Token :{Math.round(campaigns.heldBalance / (10 ** 18))}</p>
+                            <p className="p-title">Available Token :{(campaigns.target - campaigns.contribution)}</p>
                             <p className="p-title">Creator : {campaigns.creator}</p>
+                            <button className='clickable hr-flex-start' onClick={(event) => {
+                                event.preventDefault()
+                                event.stopPropagation()
+                                navigate(`/campaign/${campaigns.campaignId}/proposals`)
+                            }} style={{ textAlign: 'right', float: 'right' }} >view proposal</button>
                             <Box height="10" />
                             <div className="hr-flex-start">
                                 <p className="p-result" style={(campaigns.status === '0' || campaigns.status === '1' || campaigns.status === '2') ? { '--res-color': 'var(--primary)' } : { '--res-color': 'rgba(0,0,0,0.5)' }}>
                                     {getStatus(campaigns.status)}
-                                    </p>
+                                </p>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-
+import Web3 from 'web3';
 import "./createCampaign.scss";
 import { Box } from '../../Box';
 import Loading from '../../loading/Loading';
@@ -50,13 +50,12 @@ function CreateCampaign(props) {
         if (window.confirm("Do you want to create a new crowd funding campaign ?")) {
             setLoading(true);
             try {
-                let endDate = new Date(campaign.deadLine)
-                endDate = endDate.getTime()/1000.0
+                let tokenValue = Web3.utils.toWei(campaign.pricePerToken,'ether')
                 await crowdFundingContract.methods.createCampaign(
                     campaign.companyName,
                     campaign.title,
                     campaign.description,
-                    campaign.pricePerToken,
+                    tokenValue,
                     campaign.tokenName,
                     Date.parse(campaign.deadLine)/1000,
                     campaign.target,
@@ -128,7 +127,7 @@ function CreateCampaign(props) {
                 </div>
 
                 <div>
-                    <label>pricePerToken</label>
+                    <label>pricePerToken (ETH)</label>
                     <div className="textfield" >
                         <input id="pricePerToken" name='pricePerToken'
                             value={campaign.pricePerToken}
@@ -139,7 +138,7 @@ function CreateCampaign(props) {
                 </div>
 
                 <div>
-                    <label>target</label>
+                    <label>target (ETH)</label>
                     <div className="textfield" >
                         <input id="target" name='target' value={campaign.target}
                             minLength="1" maxLength="20" onChange={dataHandlder}
@@ -150,7 +149,7 @@ function CreateCampaign(props) {
 
                 <div>
                     <label>deadLine</label>
-                    <div className="p-date" >
+                    <div className="textfield" >
 
                         <input id="deadLine" name='deadLine' value={campaign.deadLine}
                             onChange={dataHandlder} type="datetime-local"
@@ -158,8 +157,9 @@ function CreateCampaign(props) {
                     </div>
                     <p className="error">{error.deadLine}</p>
                 </div>
+                <Box height="10"></Box>
                 <div>
-                    <label>totalSupply</label>
+                    <label>totalSupply (ETH)</label>
                     <div className="textfield" >
                         <input id="totalSupply" name='totalSupply'
                             value={campaign.totalSupply} onChange={dataHandlder} type="number" placeholder="Enter how many tokens you want to launch" required />
@@ -171,7 +171,7 @@ function CreateCampaign(props) {
                     <Box height="10"></Box>
                     <label>description</label>
                     <div className="textfield">
-                        <textarea id="description" name='description'
+                        <input id="description" name='description'
                             value={campaign.description} onChange={dataHandlder} rows="3" placeholder="Why should people want to contribute to this campaign ?" required />
                     </div>
                     <p className="error">{error.description}</p>

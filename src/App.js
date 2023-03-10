@@ -4,8 +4,9 @@ import NavigationBar from "./components/navbar/NavigationBar";
 import Campaigns from "./components/pages/campaigns/Campaigns";
 import CreateCampaign from "./components/pages/createCampaigns/CreateCampaign";
 import CampainsView from "./components/pages/campaign_view_page/CampaignView.js"
-import Stripe from "./components/pages/contribute/stripeContainer";
-import Checkout from "./components/pages/contribute/Checkout";
+import CreateProposal from "./components/pages/create_proposal_page/CreateProposal";
+import ProposalPage from "./components/pages/proposal_page/ProposalPage";
+import VotingPages from "./components/pages/voting_page/VotingPage"
 function App() {
   const { connectionState } = useConnection();
 
@@ -22,9 +23,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Campaigns />} />
           <Route path="/campaigns/createCampaigns" element={<CreateCampaign />} />
-          <Route path="/campaign/paymentPage/:index" element={<Stripe />} />
           <Route path="/campaign/viewCampaign/:index" element={<CampainsView />} />
-          <Route path="/contribute/checkout/:index" element={<Checkout />} />
+          <Route path="/campaign/:campaignIndex/createProposal/" element={<CreateProposal />} />
+          <Route path="/campaign/:campaignIndex/proposals/" element={<ProposalPage />} />
+          <Route path="/campaign/:campaignIndex/proposals/:proposalIndex" element={<VotingPages />} />
+
         </Routes>
       </BrowserRouter>
     </div>
