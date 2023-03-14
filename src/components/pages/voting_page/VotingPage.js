@@ -11,7 +11,7 @@ function ProposalPage() {
 
     const navigate = useNavigate();
 
-    const states = ['Live', 'Revoked', 'Passed', 'Failed']
+    const states = ['Live', 'Passed', 'Rejected', 'Draw']
 
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState({ vote: '', buttons: '' });
@@ -197,7 +197,7 @@ function ProposalPage() {
             </div>
 
             <Box height="30" />
-            {(!isDeadlinePassed()) && (
+            {(!isDeadlinePassed()) && !proposal.hasVoted && (
                 <div>
                     <div className="options-flex">
                         <div className="option" onClick={handleSupportChange}><div>Yes, am favor</div></div>
@@ -291,6 +291,11 @@ function ProposalPage() {
                             {
                                 (isDeadlinePassed() && !proposal.announced
                                     && proposal.proposer.toLowerCase() === accounts[0].toLowerCase()) &&
+                                <button className='clickable' onClick={handleDeclareResult}>Declare Result</button>
+                            }
+                            {
+                                (isDeadlinePassed() && !proposal.announced
+                                    && !proposal.hasVoted && proposal.proposer === accounts[0]) &&
                                 <button className='clickable' onClick={handleDeclareResult}>Declare Result</button>
                             }
                         </div>

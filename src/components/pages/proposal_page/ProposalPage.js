@@ -10,16 +10,16 @@ function ProposalPage() {
     const { accounts, daoContract } = connectionState;
     const { campaignIndex } = useParams();
     const [isLoading, setLoading] = useState(false);
-    const stateValues = ["Live", "Revoked", "Passed", "Failed"];
+    const stateValues = ["Live", "Passed", "Rejected", "Draw"];
     const navigate = useNavigate();
     // List of polls for home page
     const [proposalList, setProposalList] = useState([]);
 
     const getStatus = (state) => {
         if (state === 'Live') return 'Voting'
-        if (state === 'Revoked') return 'Cancelled'
-        if (state === 'Passed') return 'Accepted'
+        if (state === 'Passed') return 'Passed'
         if (state === 'Failed') return 'Rejected'
+        if (state === 'Draw') return 'Draw'
     }
 
     // const [campaignContractAddress, setCampaignContractAddress] = useState([])

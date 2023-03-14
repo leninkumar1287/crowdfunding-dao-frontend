@@ -2,9 +2,13 @@
     height: calc(100vh - 70px);
     display: grid;
     place-content: right;
+    padding: auto;
+    padding-left: 150px;
+
 
     .title {
         text-align: center;
+        padding-right: 220px;
         margin-bottom: 20px;
     }
 
