@@ -42,7 +42,8 @@ function CampaignView() {
         totalSupply: "",
         contract: "",
         status: "",
-        startDate: ""
+        startDate: "",
+        withDrawalStatus: ""
     });
 
     const fetchData = async () => {
@@ -56,12 +57,9 @@ function CampaignView() {
                 let company = await crowdFundingContract.methods.getCompany(response.contractAddress).call()
 
                 let tokenValue = Web3.utils.fromWei(response.pricePerToken, 'ether')
-                // let target = Web3.utils.fromWei(response.target, 'ether')
-                // let totalSupply = Web3.utils.fromWei(company.totalSupply, 'ether')
                 let tokenNeed = (response.contribution === response.target)
                     ? 'target reached'
                     : response.target - response.contribution
-
                 setCampaign({
                     campaignId: index,
                     company: response.companyName,
@@ -78,7 +76,8 @@ function CampaignView() {
                     creator: response.creator.toString(),
                     contract: response.contractAddress,
                     status: states[response.status],
-                    startDate: Date(response.startDate)
+                    startDate: Date(response.startDate),
+                    withDrawalStatus : response[15] ? "withdrawal done" : "Not done yet"
                 })
             }
         } catch (error) {
@@ -142,7 +141,8 @@ function CampaignView() {
         setError({ buttons: "" })
         setLoading(true)
         try {
-            await crowdFundingContract.methods.withDraw(index).send({ from: accounts[0] })                 
+            await crowdFundingContract.methods.withDraw(index).send({ from: accounts[0] })   
+            navigate('/')              
         } catch (error) {
             console.log("error :",error.message)
         }   
@@ -200,14 +200,13 @@ function CampaignView() {
             setError({ buttons: '' })
             setLoading(true)
             try {
-                
                 await crowdFundingContract.methods.refund(index, refund)
                     .send({
                         from: accounts[0]
                     })
-                fetchData()
+                navigate('/')
                 setLoading(false)
-                // fetchData()
+                fetchData()
             } catch (error) {
                 console.log("error ", error.message)
                 if (error.code === 4001) {
@@ -280,7 +279,7 @@ function CampaignView() {
                         <tbody>
                             {Object.entries(campaign).map(([key, value]) => (
                                 <tr key={key}>
-                                    <td>{key}</td>
+                                    <td style={{ paddingRight: "60px" }}>{key}</td>
                                     <td>{value}</td>
                                 </tr>
                             ))}
@@ -339,7 +338,7 @@ function CampaignView() {
                                 }
                             </form>
                             {
-                                (isDeadlinePassed() &&((campaign.creator).toLocaleLowerCase() === (accounts[0]).toLocaleLowerCase())) &&
+                                (isDeadlinePassed() &&((campaign.creator).toLocaleLowerCase() === (accounts[0]).toLocaleLowerCase()) && campaign.withDrawalStatus === "Not done yet" &&  campaign.received > 0) &&
                                 <button className='clickable' onClick={withDrawal}>withDrawal fund</button>
                             }
                         </div>
