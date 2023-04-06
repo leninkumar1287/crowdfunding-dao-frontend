@@ -43,7 +43,8 @@ function CampaignView() {
         contract: "",
         status: "",
         startDate: "",
-        withDrawalStatus: ""
+        withDrawalStatus: "",
+        target_In_Eth: ""
     });
 
     const fetchData = async () => {
@@ -69,7 +70,8 @@ function CampaignView() {
                     Name: response.tokenName,
                     deadLine: response.endDate,
                     target: response.target,
-                    received: response.contribution,
+                    target_In_Eth: response.target * tokenValue,
+                    received: tokenValue * response.contribution,
                     need: tokenNeed,
                     Symbol: response.tokenSymbol,
                     totalSupply: company.totalSupply,
@@ -77,7 +79,7 @@ function CampaignView() {
                     contract: response.contractAddress,
                     status: states[response.status],
                     startDate: Date(response.startDate),
-                    withDrawalStatus : response[15] ? "withdrawal done" : "Not done yet"
+                    withDrawalStatus: response[15] ? "withdrawal done" : "Not done yet"
                 })
             }
         } catch (error) {
@@ -137,15 +139,15 @@ function CampaignView() {
         setLoading(false);
     }
 
-    const withDrawal = async () =>{
+    const withDrawal = async () => {
         setError({ buttons: "" })
         setLoading(true)
         try {
-            await crowdFundingContract.methods.withDraw(index).send({ from: accounts[0] })   
-            navigate('/')              
+            await crowdFundingContract.methods.withDraw(index).send({ from: accounts[0] })
+            navigate('/')
         } catch (error) {
-            console.log("error :",error.message)
-        }   
+            console.log("error :", error.message)
+        }
         setLoading(false)
 
     }
@@ -168,6 +170,10 @@ function CampaignView() {
 
     const handleBuy = async (event) => {
         event.preventDefault();
+        if (buyToken === undefined || buyToken <= 0) {
+            alert("No values given")
+            return
+        }
         if (window.confirm("Do u want to contribute ...!  ?")) {
             setError({ buttons: '' })
             setLoading(true)
@@ -196,10 +202,15 @@ function CampaignView() {
 
     const handleRefund = async (event) => {
         event.preventDefault();
+        if (refund === undefined || refund <= 0) {
+            alert("No values given")
+            return
+        }
         if (window.confirm("Do u want to raise Refund ...! ?")) {
             setError({ buttons: '' })
             setLoading(true)
             try {
+
                 await crowdFundingContract.methods.refund(index, refund)
                     .send({
                         from: accounts[0]
@@ -259,7 +270,7 @@ function CampaignView() {
                     <Box height="10" />
 
                     <div className="flex">
-                        <p className="p-result"
+                        <p className="status"
                             style={(campaign.status === 0 || campaign.status === 1, campaign.status === 2)
                                 ? { '--res-color': 'var(--primary)' } : { '--res-color': 'rgba(0,0,0,0.5)' }}
                         >
@@ -278,6 +289,7 @@ function CampaignView() {
                         </thead>
                         <tbody>
                             {Object.entries(campaign).map(([key, value]) => (
+                                (key !== 'deadLine' && key !== 'status') &&
                                 <tr key={key}>
                                     <td style={{ paddingRight: "60px" }}>{key}</td>
                                     <td>{value}</td>
@@ -308,37 +320,39 @@ function CampaignView() {
                                 <button className='clickable' onClick={handleRejectCampaign}>Reject Campaign</button>
                             }
                             <Box height="10"></Box>
-
-                            <form onSubmit={handleBuy} className="textfield">
-                                <br />
-                                <label >
-                                    {campaign.received !== campaign.target && (!isDeadlinePassed() && states[0] === campaign.status) ? "Enter tokens to buy" : ""}
-                                </label>
-                                {(campaign.received !== campaign.target && (!isDeadlinePassed() && states[0] === campaign.status)) &&
-                                    <input type="number" value={buyToken} onChange={handleInputChange} />}
-                                {(campaign.received !== campaign.target && (!isDeadlinePassed() && states[0] === campaign.status)) &&
-                                    <button className='clickable' type="submit">
-                                        {buyToken ? `Pay  ${buyValueInETH} ETH` : "Enter Token and Pay with ETH"}
-                                    </button>
-                                }
-
-                            </form>
-                            <Box height="10"></Box>
-                            <form onSubmit={handleRefund} className="textfield">
-                                <br />
-                                <label >
-                                    {(!isDeadlinePassed() && states[0] === campaign.status) ? "Enter tokens to raise refund" : ""}
-                                </label>
-                                {((!isDeadlinePassed() && states[0] === campaign.status)) &&
-                                    <input type="number" value={refund} onChange={handleRefundInput} />}
-                                {((!isDeadlinePassed() && states[0] === campaign.status)) &&
-                                    <button className='clickable' type="submit">
-                                        {refund ? ` raise request ${refund}` : "Enter Token that you contributed"}
-                                    </button>
-                                }
-                            </form>
                             {
-                                (isDeadlinePassed() &&((campaign.creator).toLocaleLowerCase() === (accounts[0]).toLocaleLowerCase()) && campaign.withDrawalStatus === "Not done yet" &&  campaign.received > 0) &&
+                                <form onSubmit={handleBuy} className="textfield">
+                                    <br />
+                                    <label >
+                                        {campaign.received !== campaign.target && (!isDeadlinePassed() && states[0] === campaign.status) ? "Enter tokens to buy" : ""}
+                                    </label>
+                                    {(campaign.received !== campaign.target && (!isDeadlinePassed() && states[0] === campaign.status)) &&
+                                        <input type="number" value={buyToken} onChange={handleInputChange} />}
+                                    {(campaign.received !== campaign.target && (!isDeadlinePassed() && states[0] === campaign.status)) &&
+                                        <button className='clickable' type="submit">
+                                            {buyToken ? `Pay  ${buyValueInETH} ETH` : "Enter Token and Pay with ETH"}
+                                        </button>
+                                    }
+                                </form>
+                            }
+                            <Box height="10"></Box>
+                            { campaign.received > 0 &&
+                                <form onSubmit={handleRefund} className="textfield">
+                                    <br />
+                                    <label >
+                                        {(!isDeadlinePassed() && states[0] === campaign.status) ? "Enter tokens to raise refund" : ""}
+                                    </label>
+                                    {((!isDeadlinePassed() && states[0] === campaign.status)) &&
+                                        <input type="number" value={refund} onChange={handleRefundInput} />}
+                                    {((!isDeadlinePassed() && states[0] === campaign.status)) &&
+                                        <button className='clickable' type="submit">
+                                            {refund ? ` raise request ${refund}` : "Enter Token that you contributed"}
+                                        </button>
+                                    }
+                                </form>
+                            }
+                            {
+                                (isDeadlinePassed() && ((campaign.creator).toLocaleLowerCase() === (accounts[0]).toLocaleLowerCase()) && campaign.withDrawalStatus === "Not done yet" && campaign.received > 0) &&
                                 <button className='clickable' onClick={withDrawal}>withDrawal fund</button>
                             }
                         </div>
