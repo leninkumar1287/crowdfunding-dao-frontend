@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Web3 from "web3";
 import crowdFunding from "../contracts/CrowdFunding.json";
 import dao from "../contracts/Dao.json"
-const defaultChainId = 1337;
+const defaultChainId = 80001;
 export const supportedNetworks = {
     1337: {
         name: 'Ganache Local',
@@ -16,7 +16,7 @@ export const supportedNetworks = {
         tokenSymbol: 'MATIC',
         rpcURL: 'https://rpc-mumbai.maticvigil.com/',
         crowdFundingContract: crowdFunding.networks[80001] ? crowdFunding.networks[80001].address : '',
-        daoContract: dao.networks[1337] ? dao.networks[1337].address : ''
+        daoContract: dao.networks[80001] ? dao.networks[80001].address : ''
     }
 }
 const ConnectionContext = React.createContext();

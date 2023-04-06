@@ -32928,8 +32928,8 @@
     "1337": {
       "events": {},
       "links": {},
-      "address": "0x72D5544Fe9eF8D4a445ad9A5809C96a0D766d7a4",
-      "transactionHash": "0x1c34578c86928147892ea1082da2cbb720a105c0ad46d0dd3a9c9bea4a6c3bb9"
+      "address": "0x73d19c4084adc45cb87c183d9259Dcf9f5F9a05b",
+      "transactionHash": "0xc0ef4205c95dc2ac555c8f867d93b9aa6c0c6fd2290bb1fa62d0f5802fe7849f"
     },
     "80001": {
       "events": {
@@ -33078,12 +33078,12 @@
         }
       },
       "links": {},
-      "address": "0x31c63D136D5Cbb83c739b1e7bc44DEf3d51e4755",
-      "transactionHash": "0x08d611130c04e1f767ff479eaa913cbbf4e5df3d1e0e8dbe92fc1c07fbc42512"
+      "address": "0x0B7Be208fC70feFa5364d671eFE628DDDA85C7A1",
+      "transactionHash": "0xf9db6c6b4caf2cd61a6fddc1c5b00ea735698461d70fb3170255a4e00fe4dd8e"
     }
   },
   "schemaVersion": "3.4.11",
-  "updatedAt": "2023-03-24T06:24:57.667Z",
+  "updatedAt": "2023-04-06T14:25:02.699Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "All function calls are currently implemented without side effects",

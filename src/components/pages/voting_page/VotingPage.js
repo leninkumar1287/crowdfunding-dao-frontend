@@ -104,6 +104,7 @@ function ProposalPage() {
             if (e.code === 4001) {
                 setError({ vote: "Denied Metamask Transaction Signature" });
             } else {
+                console.log("Error : ",e.message)
                 setError({ vote: "Smart Contract Error. See Console" });
             }
         }
