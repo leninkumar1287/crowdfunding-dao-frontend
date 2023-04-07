@@ -295,7 +295,7 @@ function ProposalPage() {
                                 <button className='clickable' onClick={handleDeclareResult}>Declare Result</button>
                             }
                             {
-                                (isDeadlinePassed() && !proposal.announced && proposal.hasVoted) &&
+                                (isDeadlinePassed() && !proposal.announced && proposal.hasVoted && proposal.proposer.toLowerCase() !== accounts[0].toLowerCase()) &&
                                 <button className='clickable' onClick={handleDeclareResult}>Declare Result</button>
                             }
                         </div>
