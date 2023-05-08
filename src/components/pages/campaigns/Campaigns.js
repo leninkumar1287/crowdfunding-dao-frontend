@@ -35,7 +35,14 @@ function Campaigns() {
         }
     }
 
+    // async function statement  () {
+    //     let eventsemitted = crowdFundingContract.events.campaignCreated()
+    //     console.log(" eventsemitted : ",eventsemitted)
+    // }
+
+
     useEffect(() => {
+        // statement();
         fetchData();
         // eslint-disable-next-line 
     }, [accounts, crowdFundingContract]);
@@ -48,9 +55,14 @@ function Campaigns() {
         <div className="g-page">
             <div className="hr-flex">
                 <h3 className="heading">CrowdFunding Dao</h3>
-                <button className="clickable" onClick={() => { navigate('/campaigns/createCampaigns') }}>
+                <button className="clickable" style={{marginLeft:300}} onClick={() => { navigate('/campaigns/createCampaigns') }}>
                     Create Campaigns
                 </button>
+                {
+                // "admin "== "accounts[0]"  
+                <button className="clickable" style={{background: "darkCyan"}} onClick={() => { navigate('/campaign/addAdmin/') }}> Manage Admins </button>
+                }
+
             </div>
             <div className="p-list">
                 {campaignsList.length === 0 ?

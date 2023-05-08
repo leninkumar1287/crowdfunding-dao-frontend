@@ -8,7 +8,7 @@ import { useConnection } from '../../../connectionProvider/connection_provider';
 
 function CreateCampaign(props) {
     const { connectionState, connectWallet } = useConnection();
-    const { accounts, crowdFundingContract } = connectionState;
+    const { accounts, crowdFundingContract, ownableContract } = connectionState;
     const [campaign, setCampaign] = useState({
         companyName: "",
         title: "",
@@ -25,7 +25,7 @@ function CreateCampaign(props) {
     const [admin, setAdmin] = useState();
 
     useEffect(() => {
-        _setAdmin();
+        // _setAdmin();
         // eslint-disable-next-line
     }, [accounts])
 
@@ -85,10 +85,9 @@ function CreateCampaign(props) {
         return <Loading text='Creating Campaign' />
     }
 
-    async function _setAdmin() {
-        let adminOf = await crowdFundingContract.methods.admin().call()
-        setAdmin(adminOf.toLowerCase());
-    }
+    // async function _setAdmin() {
+    //     await ownableContract.methods.check(accounts[0]).call()
+    // }
 
     return (
         <div className="container create-campaign">
@@ -100,7 +99,7 @@ function CreateCampaign(props) {
                     <button
                         className="clickable"
                         type="button"
-                        style={{marginLeft: "300px",marginRight: "400px",marginBottom: "50px",marginTop:"300px"}}
+                        style={{ marginLeft: "300px", marginRight: "400px", marginBottom: "50px", marginTop: "300px" }}
                         onClick={() => {
                             if (!accounts.length > 0) {
                                 connectWallet()
@@ -177,7 +176,7 @@ function CreateCampaign(props) {
                                 <div>
                                     <label>target in ETH</label>
                                     <div>
-                                        <button style={{color: "green", backgroundColor:'cyan'}}>{campaign.target*campaign.pricePerToken}</button>
+                                        <button style={{ color: "green", backgroundColor: 'cyan' }}>{campaign.target * campaign.pricePerToken}</button>
                                     </div>
                                     <p className="error">{error.target}</p>
                                 </div>

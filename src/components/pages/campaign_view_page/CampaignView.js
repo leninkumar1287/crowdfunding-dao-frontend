@@ -8,7 +8,7 @@ import Web3 from 'web3';
 
 function CampaignView() {
     const { connectionState } = useConnection();
-    const { accounts, crowdFundingContract } = connectionState;
+    const { accounts, crowdFundingContract, ownableContract } = connectionState;
 
     const navigate = useNavigate();
 
@@ -51,9 +51,9 @@ function CampaignView() {
         setLoading(true);
         try {
             if (crowdFundingContract) {
-
-                let adminOf = await crowdFundingContract.methods.admin().call()
-                setAdmin(adminOf.toLowerCase());
+                let adminOf = await ownableContract.methods.admin(accounts[0]).call()
+                if(adminOf === true) setAdmin(adminOf)
+                else setAdmin(adminOf)
                 const response = await crowdFundingContract.methods.getCampaign(index).call();
                 let company = await crowdFundingContract.methods.getCompany(response.contractAddress).call()
 
@@ -61,6 +61,7 @@ function CampaignView() {
                 let tokenNeed = (response.contribution === response.target)
                     ? 'target reached'
                     : response.target - response.contribution
+                    console.log("response L:",response)
                 setCampaign({
                     campaignId: index,
                     company: response.companyName,
@@ -86,6 +87,7 @@ function CampaignView() {
             if (error.code === 4001) {
                 setError({ buttons: "Denied Metamask Transaction Signature" });
             } else {
+                console.log("this is error: ",error.message)
                 setError({ buttons: "Smart Contract Error. See Console" });
             }
         }
@@ -260,7 +262,7 @@ function CampaignView() {
             <Box height="20" />
             <div className="p-overview hr-flex-modif">
                 <div className="p-left">
-                    <h1 className="heading">{campaign.title}</h1>
+                        <h1 className="heading">{campaign.title}</h1>
                     {
                         isDeadlinePassed() &&
                         <div className="options">
@@ -305,18 +307,18 @@ function CampaignView() {
                     accounts[0] && (
                         <div>
                             {
-                                (!isDeadlinePassed() && admin === accounts[0] &&
+                                (!isDeadlinePassed() && admin &&
                                     states[2] === campaign.status) &&
                                 <button type="button" className='clickable button' onClick={handleApproveCampaign}>Approve campaign</button>
                             }
                             <> </>
                             {
-                                (!isDeadlinePassed() && admin === accounts[0] && states[2] === campaign.status) &&
+                                (!isDeadlinePassed() && admin && states[2] === campaign.status) &&
                                 <button className='clickable' onClick={handleRejectCampaign}>Reject Campaign</button>
                             }
 
                             {
-                                (isDeadlinePassed() && admin === accounts[0] && states[2] === campaign.status) &&
+                                (isDeadlinePassed() && admin && states[2] === campaign.status) &&
                                 <button className='clickable' onClick={handleRejectCampaign}>Reject Campaign</button>
                             }
                             <Box height="10"></Box>
