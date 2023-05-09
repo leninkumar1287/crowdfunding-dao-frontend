@@ -6,23 +6,34 @@ import Chip from '../../chip/Chip';
 import './navbar.scss'
 
 function NavigationaBar() {
-    const { connectionState, connectWallet, DisconnectWallet, setOwnableAddress } = useConnection();
-    const { accounts, chainId, ownableContract } = connectionState;
+    const { connectionState, connectWallet, DisconnectWallet } = useConnection();
+    const { accounts, chainId, crowdFundingContract,ownableContract } = connectionState;
     const [isOwnerOfOwnableContract, setIsOwnerOwnerOfOwnableContract] = useState()
 
     const navigate = useNavigate();
 
+
     async function setOwnerContractAddress() {
         try {
-            console.log("accounts[0:",accounts[0])
-            let response  = ownableContract.methods.checkOwner(accounts[0]).call()
-            console.log("response :",response)
+    console.log("isOwnerOfOwnableContract :",isOwnerOfOwnableContract)
+
+            console.log("accounts[0] :", accounts[0])
+            let response = await crowdFundingContract
+            let make = await ownableContract.methods.admin(accounts[0]).call()
+            console.log("resasaddaadponse :", make)
             setIsOwnerOwnerOfOwnableContract(response)
+            // console.log("isOwnerOfOwnableContract :",isOwnerOfOwnableContract)
+
         } catch (error) {
-
-
-            console.log(error.message)
+            console.log("error message  : ", error.message)
         }
+    }
+
+    async function checkOwnableSetter() {
+        let response = await crowdFundingContract.methods.setOwnable(accounts[0]).call()
+        console.log("crowdFunding :", response)
+        if (response) return true;
+        else return false;
     }
     useEffect(() => {
         Array.from(document.getElementsByClassName('nav-option')).forEach(element => {
@@ -42,16 +53,17 @@ function NavigationaBar() {
                     <div id="g" onClick={() => { navigate('/') }} className="nav-option" >Crowd Funding Campaigns</div>
                 </div>
                 <div className="nav-btn-flex">
-                    
-                    {accounts.length > 0 ?
-                        <Chip bgColor="var(--accent)" textColor="yellow" content={"✅"} alt="placed" /> :
-                        <div></div>
+
+                    {(accounts.length > 0 && checkOwnableSetter()) &&
+                        <Chip bgColor="var(--accent)" textColor="yellow" content={"Ownable Address setted"} alt="placed" />
                     }
-                                    
+
+                    <Box width="10" />
+
                     {
-                        (accounts.length > 0 ) &&
+                        (accounts.length > 0 && checkOwnableSetter()) &&
                         <Chip
-                            onclick={setOwnableAddress}
+                            onclick={setOwnerContractAddress}
                             bgColor="var(--accent)" textColor="yellow"
                             content="set ownable contract" />
                     }

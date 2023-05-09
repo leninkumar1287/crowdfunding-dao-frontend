@@ -4,6 +4,7 @@ import Loading from '../../loading/Loading';
 import { Box } from '../../Box';
 import { useNavigate } from 'react-router';
 import { useConnection } from '../../../connectionProvider/connection_provider';
+import Web3 from 'web3';
 
 function Campaigns() {
     const { connectionState } = useConnection();
@@ -19,6 +20,10 @@ function Campaigns() {
     }
 
     const [campaignsList, setcampaignsList] = useState([]);
+
+    const HexToString = (value) => {
+        return Web3.utils.hexToString(value);
+     }
 
     async function fetchData() {
         if (crowdFundingContract != null) {

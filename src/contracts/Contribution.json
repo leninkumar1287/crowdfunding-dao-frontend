@@ -1,0 +1,2717 @@
+{
+  "contractName": "Contribution",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "ownableAddress",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableAddressSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_companyName",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_title",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_description",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_pricePerToken",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "_tokenName",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "deadLine",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_target",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "_tokenSymbol",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_totalSupply",
+          "type": "uint256"
+        }
+      ],
+      "name": "campaignCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "contribution",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "contributer",
+          "type": "address"
+        }
+      ],
+      "name": "contribution",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "contribution",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "contributer",
+          "type": "address"
+        }
+      ],
+      "name": "refunded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "rejected",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "campaignCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ownable",
+      "outputs": [
+        {
+          "internalType": "contract OwnableContract",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "receipts",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "contributer",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokens",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "receivedEth",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "refund",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokens",
+          "type": "uint256"
+        }
+      ],
+      "name": "contribute",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"ownableAddress\",\"type\":\"address\"}],\"name\":\"OwnableAddressSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"}],\"name\":\"approved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_companyName\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_title\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_description\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_pricePerToken\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"_tokenName\",\"type\":\"string\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"deadLine\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_target\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"_tokenSymbol\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_totalSupply\",\"type\":\"uint256\"}],\"name\":\"campaignCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"contribution\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"contributer\",\"type\":\"address\"}],\"name\":\"contribution\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"contribution\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"contributer\",\"type\":\"address\"}],\"name\":\"refunded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"}],\"name\":\"rejected\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"campaignCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokens\",\"type\":\"uint256\"}],\"name\":\"contribute\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ownable\",\"outputs\":[{\"internalType\":\"contract OwnableContract\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"receipts\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"contributer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokens\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"receivedEth\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"refund\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"contribute(uint256,uint256)\":{\"details\":\"getting ERC20 token by giving the fiat currency in msg.value\",\"params\":{\"campaignId\":\"helping to find and contribute against the campaign by this id \",\"tokens\":\"How many token user want's to buy against the fiat currency\"}},\"refund(uint256,uint256)\":{\"details\":\"users can call refund if they want their contribution back before deadLine\",\"params\":{\"_amount\":\"amount to be refund \",\"campaignId\":\"campaignId helping to find the campaign by this id \"}}},\"version\":1},\"userdoc\":{\"events\":{\"approved(uint256)\":{\"notice\":\"approval of the campaign\"},\"campaignCreated(uint256,bytes32,bytes32,bytes32,uint256,string,uint256,uint256,string,uint256)\":{\"notice\":\"event for campaign creation\"},\"contribution(uint256,uint256,address)\":{\"notice\":\"event for contribution\"},\"refunded(uint256,uint256,address)\":{\"notice\":\"refund request against the contribution\"},\"rejected(uint256)\":{\"notice\":\"rejection of the campaign\"}},\"kind\":\"user\",\"methods\":{\"contribute(uint256,uint256)\":{\"notice\":\"contribute to the campaign\"},\"refund(uint256,uint256)\":{\"notice\":\"handling the refund\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Contribution.sol\":\"Contribution\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0x4ffc0547c02ad22925310c585c0f166f8759e2648a09e9b489100c42f15dd98d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://15f52f51413a9de1ff191e2f6367c62178e1df7806d7880fe857a98b0b66253d\",\"dweb:/ipfs/QmaQG1fwfgUt5E9nu2cccFiV47B2V78MM1tCy1qB7n4MsH\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a376d3dda2cb70536c0a45c208b29b34ac560c4cb4f513a42079f96ba47d2dd\",\"dweb:/ipfs/QmZQg6gn1sUpM8wHzwNvSnihumUCAhxD119MpXeKp8B9s8\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"project:/contracts/Contribution.sol\":{\"keccak256\":\"0x5d64703ba7619338eaacfedbbdd42760a457fe08bfa4374a79dff6a69490d831\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://5f4d968be17c601aef2331f675c022fe1822d773260a52d59b4d789e87de917f\",\"dweb:/ipfs/QmNcMf5ouqe1M38bDd2CXraWfquXihEn6hm7UjJex6T3rC\"]},\"project:/contracts/ERC20/Contexts.sol\":{\"keccak256\":\"0xed63772636599a1230c6a3de5fac8328f7079f9892df947a91cf90b41bf4d680\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://06d6e2a215af46a884ec6118fafd0bfa39476003d8914a9f0d32004af2e04df0\",\"dweb:/ipfs/QmeqDqJtgncZ7ptwPK6abWZNfW2vxXctSANRsm19EiEUT2\"]},\"project:/contracts/ERC20/ERC20.sol\":{\"keccak256\":\"0x63ae980aed6cfe5e7bf0f636fd40e6660d49b96bf74edf658df167e846729410\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://50a1d29d1cac9ce57d1b5ad1c7c705eeb97b3ad7370bf3193e1333bb1ae000fa\",\"dweb:/ipfs/QmNbakcr8SJxjS6W1zdbEV9vdNo8GjPfSw3r3wtUEB9jCc\"]},\"project:/contracts/ERC20/Ownable.sol\":{\"keccak256\":\"0x0669609bbb81e26ff4286ab27d559b630e33be3508f03ecf64d30fdab7a97fab\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://77219665368a6b43f864c6ca0459c559e2f9dff048abb33b3c2630204ee666a0\",\"dweb:/ipfs/QmfRqSQ3VdcTrxEHSNTNQpmG2GaPjEDNfBPddVhQovmzXW\"]},\"project:/contracts/Modifiers.sol\":{\"keccak256\":\"0xa79dc5dade80532b747cb931cb3efcdde239fe22e66c9da05888502edb98ea3a\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://9cacefb1a1dea28b12039dc690e683565a833f0e9da47db61c7007c55f83f80c\",\"dweb:/ipfs/QmfGRDb3ePRZ8TSVmVH8eW5AJQzNGo4h6cMqMLJgA3eWNH\"]},\"project:/contracts/Refund.sol\":{\"keccak256\":\"0x8181d6cc3848937a19257f1ef3f767c0595b56a467ed6dea27d0dc691e3e4930\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://edd996928438b9e50423ea236d8f0b1cd47899c85ffd172bb8593d9ebd1f0ce8\",\"dweb:/ipfs/QmQB6GpGmCtyamQj3W777Rs4ZZy8sFA1Mon41V3fTJw8aA\"]},\"project:/contracts/StateVariables.sol\":{\"keccak256\":\"0xb547cfe09da672039078bf525c52e49c5dd28261ea58ebf640e5699794f67a1d\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://fa550d099a25d2251716e0d52967fa78759459b69a98cf0adc35ce172565ec29\",\"dweb:/ipfs/QmTCeZnBzUyhNwGVQiaBWGbG9WXzGphEQXZ1JiJ5zoSvMW\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: SEE LICENSE IN LICENSE\npragma solidity ^0.8;\n\n// import \"./StateVariables.sol\";\n// import \"./Modifiers.sol\";\nimport \"./Refund.sol\";\n\nabstract contract Contribution is Refund {\n    /**\n    * @notice contribute to the campaign\n    * @dev getting ERC20 token by giving the fiat currency in msg.value\n    * @param campaignId helping to find and contribute against the campaign by this id \n    * @param tokens How many token user want's to buy against the fiat currency\n    */\n\n    function contribute(uint256 campaignId, uint256 tokens) external payable isCampaignFound(campaignId) isDeadLinePassed(campaignId) returns(bool) {\n        Campaign storage currentCampaign = campaigns[campaignId];\n        ContributionReceipt storage user = receipts[campaignId][msg.sender];\n        require(msg.value == currentCampaign.pricePerToken * tokens, \"Incorrect amount\");\n        require(currentCampaign.status == campainStatus.APPROVED, \"Not approved\");\n        if(currentCampaign.contribution == 0){\n        require(\n            tokens > 0 &&\n            currentCampaign.contribution + tokens <= currentCampaign.target &&\n            tokens <= currentCampaign.target,\n            \"Invalid contribution.\"\n        );\n        }\n        else\n        {\n            require(tokens > 0 &&\n            currentCampaign.contribution + tokens <= currentCampaign.target,\n            \"Invalid contributions.\");\n        }\n\n        currentCampaign.contribution += tokens;\n\n        ERC20Token(currentCampaign.contractAddress).transfer(currentCampaign.creator,msg.sender,tokens * 10**18);\n        \n        currentCampaign.heldBalance -= tokens;\n        balance[currentCampaign.creator] -= tokens ;\n        balance[msg.sender] += tokens;\n\n        user.tokens +=tokens;\n        user.receivedEth +=msg.value;\n        user.contributer = msg.sender;\n        user.campaignId = campaignId;\n\n        emit contribution(campaignId, currentCampaign.contribution, msg.sender);\n        return true;\n\n    }\n}",
+  "sourcePath": "/home/neosoft/projects/solidity/crowdFunding/crowdfunding-dao-solidity/contracts/Contribution.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Contribution.sol",
+    "exportedSymbols": {
+      "Context": [
+        711
+      ],
+      "Contexts": [
+        2180
+      ],
+      "Contribution": [
+        891
+      ],
+      "ERC20": [
+        586
+      ],
+      "ERC20Token": [
+        2260
+      ],
+      "IERC20": [
+        664
+      ],
+      "IERC20Metadata": [
+        689
+      ],
+      "Modifiers": [
+        2593
+      ],
+      "OwnableContract": [
+        2509
+      ],
+      "Refund": [
+        2740
+      ],
+      "StateVariables": [
+        2885
+      ]
+    },
+    "id": 892,
+    "license": "SEE LICENSE IN LICENSE",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 713,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "51:21:4"
+      },
+      {
+        "absolutePath": "project:/contracts/Refund.sol",
+        "file": "./Refund.sol",
+        "id": 714,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 892,
+        "sourceUnit": 2741,
+        "src": "137:22:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 715,
+              "name": "Refund",
+              "nameLocations": [
+                "195:6:4"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 2740,
+              "src": "195:6:4"
+            },
+            "id": 716,
+            "nodeType": "InheritanceSpecifier",
+            "src": "195:6:4"
+          }
+        ],
+        "canonicalName": "Contribution",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 891,
+        "linearizedBaseContracts": [
+          891,
+          2740,
+          2593,
+          2885
+        ],
+        "name": "Contribution",
+        "nameLocation": "179:12:4",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 889,
+              "nodeType": "Block",
+              "src": "649:1340:4",
+              "statements": [
+                {
+                  "assignments": [
+                    734
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 734,
+                      "mutability": "mutable",
+                      "name": "currentCampaign",
+                      "nameLocation": "676:15:4",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 889,
+                      "src": "659:32:4",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                        "typeString": "struct StateVariables.Campaign"
+                      },
+                      "typeName": {
+                        "id": 733,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 732,
+                          "name": "Campaign",
+                          "nameLocations": [
+                            "659:8:4"
+                          ],
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 2782,
+                          "src": "659:8:4"
+                        },
+                        "referencedDeclaration": 2782,
+                        "src": "659:8:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                          "typeString": "struct StateVariables.Campaign"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 738,
+                  "initialValue": {
+                    "baseExpression": {
+                      "id": 735,
+                      "name": "campaigns",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2868,
+                      "src": "694:9:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Campaign_$2782_storage_$",
+                        "typeString": "mapping(uint256 => struct StateVariables.Campaign storage ref)"
+                      }
+                    },
+                    "id": 737,
+                    "indexExpression": {
+                      "id": 736,
+                      "name": "campaignId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 719,
+                      "src": "704:10:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "694:21:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Campaign_$2782_storage",
+                      "typeString": "struct StateVariables.Campaign storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "659:56:4"
+                },
+                {
+                  "assignments": [
+                    741
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 741,
+                      "mutability": "mutable",
+                      "name": "user",
+                      "nameLocation": "753:4:4",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 889,
+                      "src": "725:32:4",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ContributionReceipt_$2802_storage_ptr",
+                        "typeString": "struct StateVariables.ContributionReceipt"
+                      },
+                      "typeName": {
+                        "id": 740,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 739,
+                          "name": "ContributionReceipt",
+                          "nameLocations": [
+                            "725:19:4"
+                          ],
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 2802,
+                          "src": "725:19:4"
+                        },
+                        "referencedDeclaration": 2802,
+                        "src": "725:19:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ContributionReceipt_$2802_storage_ptr",
+                          "typeString": "struct StateVariables.ContributionReceipt"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 748,
+                  "initialValue": {
+                    "baseExpression": {
+                      "baseExpression": {
+                        "id": 742,
+                        "name": "receipts",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2880,
+                        "src": "760:8:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_struct$_ContributionReceipt_$2802_storage_$_$",
+                          "typeString": "mapping(uint256 => mapping(address => struct StateVariables.ContributionReceipt storage ref))"
+                        }
+                      },
+                      "id": 744,
+                      "indexExpression": {
+                        "id": 743,
+                        "name": "campaignId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 719,
+                        "src": "769:10:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "760:20:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_ContributionReceipt_$2802_storage_$",
+                        "typeString": "mapping(address => struct StateVariables.ContributionReceipt storage ref)"
+                      }
+                    },
+                    "id": 747,
+                    "indexExpression": {
+                      "expression": {
+                        "id": 745,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967281,
+                        "src": "781:3:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 746,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "785:6:4",
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "src": "781:10:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "760:32:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ContributionReceipt_$2802_storage",
+                      "typeString": "struct StateVariables.ContributionReceipt storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "725:67:4"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 756,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 750,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967281,
+                            "src": "810:3:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 751,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "814:5:4",
+                          "memberName": "value",
+                          "nodeType": "MemberAccess",
+                          "src": "810:9:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 755,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "expression": {
+                              "id": 752,
+                              "name": "currentCampaign",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 734,
+                              "src": "823:15:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                                "typeString": "struct StateVariables.Campaign storage pointer"
+                              }
+                            },
+                            "id": 753,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberLocation": "839:13:4",
+                            "memberName": "pricePerToken",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 2766,
+                            "src": "823:29:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "*",
+                          "rightExpression": {
+                            "id": 754,
+                            "name": "tokens",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 721,
+                            "src": "855:6:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "823:38:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "810:51:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "496e636f727265637420616d6f756e74",
+                        "id": 757,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "863:18:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_f313977f9f132db863cda3455f302e47301ce6a1616834c5cd6d5972d9a8c2f4",
+                          "typeString": "literal_string \"Incorrect amount\""
+                        },
+                        "value": "Incorrect amount"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_f313977f9f132db863cda3455f302e47301ce6a1616834c5cd6d5972d9a8c2f4",
+                          "typeString": "literal_string \"Incorrect amount\""
+                        }
+                      ],
+                      "id": 749,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "802:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 758,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "802:80:4",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 759,
+                  "nodeType": "ExpressionStatement",
+                  "src": "802:80:4"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_campainStatus_$2863",
+                          "typeString": "enum StateVariables.campainStatus"
+                        },
+                        "id": 765,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 761,
+                            "name": "currentCampaign",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 734,
+                            "src": "900:15:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                              "typeString": "struct StateVariables.Campaign storage pointer"
+                            }
+                          },
+                          "id": 762,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "916:6:4",
+                          "memberName": "status",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2779,
+                          "src": "900:22:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_campainStatus_$2863",
+                            "typeString": "enum StateVariables.campainStatus"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "expression": {
+                            "id": 763,
+                            "name": "campainStatus",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2863,
+                            "src": "926:13:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_campainStatus_$2863_$",
+                              "typeString": "type(enum StateVariables.campainStatus)"
+                            }
+                          },
+                          "id": 764,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberLocation": "940:8:4",
+                          "memberName": "APPROVED",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2860,
+                          "src": "926:22:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_campainStatus_$2863",
+                            "typeString": "enum StateVariables.campainStatus"
+                          }
+                        },
+                        "src": "900:48:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "4e6f7420617070726f766564",
+                        "id": 766,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "950:14:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_70356c467a9713064077b7fa0ff1a074c93b1f7c48415be181b9cd799b628361",
+                          "typeString": "literal_string \"Not approved\""
+                        },
+                        "value": "Not approved"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_70356c467a9713064077b7fa0ff1a074c93b1f7c48415be181b9cd799b628361",
+                          "typeString": "literal_string \"Not approved\""
+                        }
+                      ],
+                      "id": 760,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "892:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 767,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "892:73:4",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 768,
+                  "nodeType": "ExpressionStatement",
+                  "src": "892:73:4"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 772,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "id": 769,
+                        "name": "currentCampaign",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 734,
+                        "src": "978:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                          "typeString": "struct StateVariables.Campaign storage pointer"
+                        }
+                      },
+                      "id": 770,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "994:12:4",
+                      "memberName": "contribution",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2770,
+                      "src": "978:28:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "hexValue": "30",
+                      "id": 771,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1010:1:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "978:33:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 809,
+                    "nodeType": "Block",
+                    "src": "1260:161:4",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "commonType": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "id": 805,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "commonType": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                "id": 797,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "id": 795,
+                                  "name": "tokens",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 721,
+                                  "src": "1282:6:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": ">",
+                                "rightExpression": {
+                                  "hexValue": "30",
+                                  "id": 796,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "number",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "1291:1:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_rational_0_by_1",
+                                    "typeString": "int_const 0"
+                                  },
+                                  "value": "0"
+                                },
+                                "src": "1282:10:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "&&",
+                              "rightExpression": {
+                                "commonType": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                "id": 804,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "commonType": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  },
+                                  "id": 801,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "leftExpression": {
+                                    "expression": {
+                                      "id": 798,
+                                      "name": "currentCampaign",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 734,
+                                      "src": "1308:15:4",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                                        "typeString": "struct StateVariables.Campaign storage pointer"
+                                      }
+                                    },
+                                    "id": 799,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberLocation": "1324:12:4",
+                                    "memberName": "contribution",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 2770,
+                                    "src": "1308:28:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "nodeType": "BinaryOperation",
+                                  "operator": "+",
+                                  "rightExpression": {
+                                    "id": 800,
+                                    "name": "tokens",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 721,
+                                    "src": "1339:6:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "src": "1308:37:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": "<=",
+                                "rightExpression": {
+                                  "expression": {
+                                    "id": 802,
+                                    "name": "currentCampaign",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 734,
+                                    "src": "1349:15:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                                      "typeString": "struct StateVariables.Campaign storage pointer"
+                                    }
+                                  },
+                                  "id": 803,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberLocation": "1365:6:4",
+                                  "memberName": "target",
+                                  "nodeType": "MemberAccess",
+                                  "referencedDeclaration": 2768,
+                                  "src": "1349:22:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "src": "1308:63:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "src": "1282:89:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            },
+                            {
+                              "hexValue": "496e76616c696420636f6e747269627574696f6e732e",
+                              "id": 806,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1385:24:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_4f14e0983b08bec45a5f50699fec73ec47d43dc0477c8869126ad24e879b1f33",
+                                "typeString": "literal_string \"Invalid contributions.\""
+                              },
+                              "value": "Invalid contributions."
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              {
+                                "typeIdentifier": "t_stringliteral_4f14e0983b08bec45a5f50699fec73ec47d43dc0477c8869126ad24e879b1f33",
+                                "typeString": "literal_string \"Invalid contributions.\""
+                              }
+                            ],
+                            "id": 794,
+                            "name": "require",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [
+                              4294967278,
+                              4294967278
+                            ],
+                            "referencedDeclaration": 4294967278,
+                            "src": "1274:7:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                              "typeString": "function (bool,string memory) pure"
+                            }
+                          },
+                          "id": 807,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1274:136:4",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 808,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1274:136:4"
+                      }
+                    ]
+                  },
+                  "id": 810,
+                  "nodeType": "IfStatement",
+                  "src": "975:446:4",
+                  "trueBody": {
+                    "id": 793,
+                    "nodeType": "Block",
+                    "src": "1012:226:4",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "commonType": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "id": 789,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "commonType": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                "id": 784,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "commonType": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  },
+                                  "id": 776,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "leftExpression": {
+                                    "id": 774,
+                                    "name": "tokens",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 721,
+                                    "src": "1043:6:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "nodeType": "BinaryOperation",
+                                  "operator": ">",
+                                  "rightExpression": {
+                                    "hexValue": "30",
+                                    "id": 775,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "kind": "number",
+                                    "lValueRequested": false,
+                                    "nodeType": "Literal",
+                                    "src": "1052:1:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_rational_0_by_1",
+                                      "typeString": "int_const 0"
+                                    },
+                                    "value": "0"
+                                  },
+                                  "src": "1043:10:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": "&&",
+                                "rightExpression": {
+                                  "commonType": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  },
+                                  "id": 783,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "leftExpression": {
+                                    "commonType": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    "id": 780,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "leftExpression": {
+                                      "expression": {
+                                        "id": 777,
+                                        "name": "currentCampaign",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 734,
+                                        "src": "1069:15:4",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                                          "typeString": "struct StateVariables.Campaign storage pointer"
+                                        }
+                                      },
+                                      "id": 778,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "memberLocation": "1085:12:4",
+                                      "memberName": "contribution",
+                                      "nodeType": "MemberAccess",
+                                      "referencedDeclaration": 2770,
+                                      "src": "1069:28:4",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "nodeType": "BinaryOperation",
+                                    "operator": "+",
+                                    "rightExpression": {
+                                      "id": 779,
+                                      "name": "tokens",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 721,
+                                      "src": "1100:6:4",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "src": "1069:37:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "nodeType": "BinaryOperation",
+                                  "operator": "<=",
+                                  "rightExpression": {
+                                    "expression": {
+                                      "id": 781,
+                                      "name": "currentCampaign",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 734,
+                                      "src": "1110:15:4",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                                        "typeString": "struct StateVariables.Campaign storage pointer"
+                                      }
+                                    },
+                                    "id": 782,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberLocation": "1126:6:4",
+                                    "memberName": "target",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 2768,
+                                    "src": "1110:22:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "src": "1069:63:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                  }
+                                },
+                                "src": "1043:89:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "&&",
+                              "rightExpression": {
+                                "commonType": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                "id": 788,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "id": 785,
+                                  "name": "tokens",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 721,
+                                  "src": "1148:6:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": "<=",
+                                "rightExpression": {
+                                  "expression": {
+                                    "id": 786,
+                                    "name": "currentCampaign",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 734,
+                                    "src": "1158:15:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                                      "typeString": "struct StateVariables.Campaign storage pointer"
+                                    }
+                                  },
+                                  "id": 787,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberLocation": "1174:6:4",
+                                  "memberName": "target",
+                                  "nodeType": "MemberAccess",
+                                  "referencedDeclaration": 2768,
+                                  "src": "1158:22:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "src": "1148:32:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "src": "1043:137:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            },
+                            {
+                              "hexValue": "496e76616c696420636f6e747269627574696f6e2e",
+                              "id": 790,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1194:23:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_3ea1c0868e86a7851a01eeadda5130d164e6beb4781b3d6d47273b103345da60",
+                                "typeString": "literal_string \"Invalid contribution.\""
+                              },
+                              "value": "Invalid contribution."
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              {
+                                "typeIdentifier": "t_stringliteral_3ea1c0868e86a7851a01eeadda5130d164e6beb4781b3d6d47273b103345da60",
+                                "typeString": "literal_string \"Invalid contribution.\""
+                              }
+                            ],
+                            "id": 773,
+                            "name": "require",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [
+                              4294967278,
+                              4294967278
+                            ],
+                            "referencedDeclaration": 4294967278,
+                            "src": "1022:7:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                              "typeString": "function (bool,string memory) pure"
+                            }
+                          },
+                          "id": 791,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1022:205:4",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 792,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1022:205:4"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "id": 815,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 811,
+                        "name": "currentCampaign",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 734,
+                        "src": "1431:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                          "typeString": "struct StateVariables.Campaign storage pointer"
+                        }
+                      },
+                      "id": 813,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "1447:12:4",
+                      "memberName": "contribution",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2770,
+                      "src": "1431:28:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "+=",
+                    "rightHandSide": {
+                      "id": 814,
+                      "name": "tokens",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 721,
+                      "src": "1463:6:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1431:38:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 816,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1431:38:4"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "expression": {
+                          "id": 822,
+                          "name": "currentCampaign",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 734,
+                          "src": "1533:15:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                            "typeString": "struct StateVariables.Campaign storage pointer"
+                          }
+                        },
+                        "id": 823,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1549:7:4",
+                        "memberName": "creator",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 2760,
+                        "src": "1533:23:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 824,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "1557:3:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 825,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1561:6:4",
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "1557:10:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 830,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 826,
+                          "name": "tokens",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 721,
+                          "src": "1568:6:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "*",
+                        "rightExpression": {
+                          "commonType": {
+                            "typeIdentifier": "t_rational_1000000000000000000_by_1",
+                            "typeString": "int_const 1000000000000000000"
+                          },
+                          "id": 829,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "hexValue": "3130",
+                            "id": 827,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1577:2:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_10_by_1",
+                              "typeString": "int_const 10"
+                            },
+                            "value": "10"
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "**",
+                          "rightExpression": {
+                            "hexValue": "3138",
+                            "id": 828,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1581:2:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_18_by_1",
+                              "typeString": "int_const 18"
+                            },
+                            "value": "18"
+                          },
+                          "src": "1577:6:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_1000000000000000000_by_1",
+                            "typeString": "int_const 1000000000000000000"
+                          }
+                        },
+                        "src": "1568:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "arguments": [
+                          {
+                            "expression": {
+                              "id": 818,
+                              "name": "currentCampaign",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 734,
+                              "src": "1491:15:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                                "typeString": "struct StateVariables.Campaign storage pointer"
+                              }
+                            },
+                            "id": 819,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberLocation": "1507:15:4",
+                            "memberName": "contractAddress",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 2750,
+                            "src": "1491:31:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 817,
+                          "name": "ERC20Token",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2260,
+                          "src": "1480:10:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_ERC20Token_$2260_$",
+                            "typeString": "type(contract ERC20Token)"
+                          }
+                        },
+                        "id": 820,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1480:43:4",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ERC20Token_$2260",
+                          "typeString": "contract ERC20Token"
+                        }
+                      },
+                      "id": 821,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "1524:8:4",
+                      "memberName": "transfer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2259,
+                      "src": "1480:52:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
+                        "typeString": "function (address,address,uint256) external"
+                      }
+                    },
+                    "id": 831,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1480:104:4",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 832,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1480:104:4"
+                },
+                {
+                  "expression": {
+                    "id": 837,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 833,
+                        "name": "currentCampaign",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 734,
+                        "src": "1603:15:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                          "typeString": "struct StateVariables.Campaign storage pointer"
+                        }
+                      },
+                      "id": 835,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "1619:11:4",
+                      "memberName": "heldBalance",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2772,
+                      "src": "1603:27:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "-=",
+                    "rightHandSide": {
+                      "id": 836,
+                      "name": "tokens",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 721,
+                      "src": "1634:6:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1603:37:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 838,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1603:37:4"
+                },
+                {
+                  "expression": {
+                    "id": 844,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 839,
+                        "name": "balance",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2884,
+                        "src": "1650:7:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                          "typeString": "mapping(address => uint256)"
+                        }
+                      },
+                      "id": 842,
+                      "indexExpression": {
+                        "expression": {
+                          "id": 840,
+                          "name": "currentCampaign",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 734,
+                          "src": "1658:15:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                            "typeString": "struct StateVariables.Campaign storage pointer"
+                          }
+                        },
+                        "id": 841,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1674:7:4",
+                        "memberName": "creator",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 2760,
+                        "src": "1658:23:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1650:32:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "-=",
+                    "rightHandSide": {
+                      "id": 843,
+                      "name": "tokens",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 721,
+                      "src": "1686:6:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1650:42:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 845,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1650:42:4"
+                },
+                {
+                  "expression": {
+                    "id": 851,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 846,
+                        "name": "balance",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2884,
+                        "src": "1703:7:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                          "typeString": "mapping(address => uint256)"
+                        }
+                      },
+                      "id": 849,
+                      "indexExpression": {
+                        "expression": {
+                          "id": 847,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "1711:3:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 848,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1715:6:4",
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "1711:10:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1703:19:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "+=",
+                    "rightHandSide": {
+                      "id": 850,
+                      "name": "tokens",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 721,
+                      "src": "1726:6:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1703:29:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 852,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1703:29:4"
+                },
+                {
+                  "expression": {
+                    "id": 857,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 853,
+                        "name": "user",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 741,
+                        "src": "1743:4:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ContributionReceipt_$2802_storage_ptr",
+                          "typeString": "struct StateVariables.ContributionReceipt storage pointer"
+                        }
+                      },
+                      "id": 855,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "1748:6:4",
+                      "memberName": "tokens",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2799,
+                      "src": "1743:11:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "+=",
+                    "rightHandSide": {
+                      "id": 856,
+                      "name": "tokens",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 721,
+                      "src": "1757:6:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1743:20:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 858,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1743:20:4"
+                },
+                {
+                  "expression": {
+                    "id": 864,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 859,
+                        "name": "user",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 741,
+                        "src": "1773:4:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ContributionReceipt_$2802_storage_ptr",
+                          "typeString": "struct StateVariables.ContributionReceipt storage pointer"
+                        }
+                      },
+                      "id": 861,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "1778:11:4",
+                      "memberName": "receivedEth",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2801,
+                      "src": "1773:16:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "+=",
+                    "rightHandSide": {
+                      "expression": {
+                        "id": 862,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967281,
+                        "src": "1792:3:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 863,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "1796:5:4",
+                      "memberName": "value",
+                      "nodeType": "MemberAccess",
+                      "src": "1792:9:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1773:28:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 865,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1773:28:4"
+                },
+                {
+                  "expression": {
+                    "id": 871,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 866,
+                        "name": "user",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 741,
+                        "src": "1811:4:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ContributionReceipt_$2802_storage_ptr",
+                          "typeString": "struct StateVariables.ContributionReceipt storage pointer"
+                        }
+                      },
+                      "id": 868,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "1816:11:4",
+                      "memberName": "contributer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2795,
+                      "src": "1811:16:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "expression": {
+                        "id": 869,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967281,
+                        "src": "1830:3:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 870,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "1834:6:4",
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "src": "1830:10:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1811:29:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 872,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1811:29:4"
+                },
+                {
+                  "expression": {
+                    "id": 877,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 873,
+                        "name": "user",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 741,
+                        "src": "1850:4:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ContributionReceipt_$2802_storage_ptr",
+                          "typeString": "struct StateVariables.ContributionReceipt storage pointer"
+                        }
+                      },
+                      "id": 875,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "1855:10:4",
+                      "memberName": "campaignId",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2797,
+                      "src": "1850:15:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 876,
+                      "name": "campaignId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 719,
+                      "src": "1868:10:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1850:28:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 878,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1850:28:4"
+                },
+                {
+                  "eventCall": {
+                    "arguments": [
+                      {
+                        "id": 880,
+                        "name": "campaignId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 719,
+                        "src": "1907:10:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 881,
+                          "name": "currentCampaign",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 734,
+                          "src": "1919:15:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                            "typeString": "struct StateVariables.Campaign storage pointer"
+                          }
+                        },
+                        "id": 882,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1935:12:4",
+                        "memberName": "contribution",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 2770,
+                        "src": "1919:28:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 883,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "1949:3:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 884,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1953:6:4",
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "1949:10:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 879,
+                      "name": "contribution",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2844,
+                      "src": "1894:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$_t_uint256_$_t_address_$returns$__$",
+                        "typeString": "function (uint256,uint256,address)"
+                      }
+                    },
+                    "id": 885,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1894:66:4",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 886,
+                  "nodeType": "EmitStatement",
+                  "src": "1889:71:4"
+                },
+                {
+                  "expression": {
+                    "hexValue": "74727565",
+                    "id": 887,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1977:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 731,
+                  "id": 888,
+                  "nodeType": "Return",
+                  "src": "1970:11:4"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 717,
+              "nodeType": "StructuredDocumentation",
+              "src": "208:291:4",
+              "text": " @notice contribute to the campaign\n @dev getting ERC20 token by giving the fiat currency in msg.value\n @param campaignId helping to find and contribute against the campaign by this id \n @param tokens How many token user want's to buy against the fiat currency"
+            },
+            "functionSelector": "8c590917",
+            "id": 890,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "id": 724,
+                    "name": "campaignId",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 719,
+                    "src": "594:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 725,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 723,
+                  "name": "isCampaignFound",
+                  "nameLocations": [
+                    "578:15:4"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 2575,
+                  "src": "578:15:4"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "578:27:4"
+              },
+              {
+                "arguments": [
+                  {
+                    "id": 727,
+                    "name": "campaignId",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 719,
+                    "src": "623:10:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 728,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 726,
+                  "name": "isDeadLinePassed",
+                  "nameLocations": [
+                    "606:16:4"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 2592,
+                  "src": "606:16:4"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "606:28:4"
+              }
+            ],
+            "name": "contribute",
+            "nameLocation": "514:10:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 722,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 719,
+                  "mutability": "mutable",
+                  "name": "campaignId",
+                  "nameLocation": "533:10:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 890,
+                  "src": "525:18:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 718,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "525:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 721,
+                  "mutability": "mutable",
+                  "name": "tokens",
+                  "nameLocation": "553:6:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 890,
+                  "src": "545:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 720,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "545:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "524:36:4"
+            },
+            "returnParameters": {
+              "id": 731,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 730,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 890,
+                  "src": "643:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 729,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "643:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "642:6:4"
+            },
+            "scope": 891,
+            "src": "505:1484:4",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 892,
+        "src": "161:1830:4",
+        "usedErrors": []
+      }
+    ],
+    "src": "51:1940:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.11",
+  "updatedAt": "2023-05-09T10:46:07.485Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "contribute(uint256,uint256)": {
+        "details": "getting ERC20 token by giving the fiat currency in msg.value",
+        "params": {
+          "campaignId": "helping to find and contribute against the campaign by this id ",
+          "tokens": "How many token user want's to buy against the fiat currency"
+        }
+      },
+      "refund(uint256,uint256)": {
+        "details": "users can call refund if they want their contribution back before deadLine",
+        "params": {
+          "_amount": "amount to be refund ",
+          "campaignId": "campaignId helping to find the campaign by this id "
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "approved(uint256)": {
+        "notice": "approval of the campaign"
+      },
+      "campaignCreated(uint256,bytes32,bytes32,bytes32,uint256,string,uint256,uint256,string,uint256)": {
+        "notice": "event for campaign creation"
+      },
+      "contribution(uint256,uint256,address)": {
+        "notice": "event for contribution"
+      },
+      "refunded(uint256,uint256,address)": {
+        "notice": "refund request against the contribution"
+      },
+      "rejected(uint256)": {
+        "notice": "rejection of the campaign"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "contribute(uint256,uint256)": {
+        "notice": "contribute to the campaign"
+      },
+      "refund(uint256,uint256)": {
+        "notice": "handling the refund"
+      }
+    },
+    "version": 1
+  }
+}

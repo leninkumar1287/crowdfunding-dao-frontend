@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Web3 from "web3";
 import crowdFunding from "../contracts/CrowdFunding.json";
 import dao from "../contracts/Dao.json"
+import ownable from "../contracts/OwnableContract.json"
 const defaultChainId = 80001;
 export const supportedNetworks = {
     1337: {
@@ -9,14 +10,17 @@ export const supportedNetworks = {
         tokenSymbol: 'ETH',
         rpcURL: 'http://localhost:7545',
         crowdFundingContract: crowdFunding.networks[1337] ? crowdFunding.networks[1337].address : '',
-        daoContract: dao.networks[1337] ? dao.networks[1337].address : ''
+        daoContract: dao.networks[1337] ? dao.networks[1337].address : '',
+        ownableContract : ownable.networks[1337] ? ownable.networks[1337].address : ''
+        
     },
     80001: {
         name: 'Mumbai Polygon Testnet',
         tokenSymbol: 'MATIC',
         rpcURL: 'https://rpc-mumbai.maticvigil.com/',
         crowdFundingContract: crowdFunding.networks[80001] ? crowdFunding.networks[80001].address : '',
-        daoContract: dao.networks[80001] ? dao.networks[80001].address : ''
+        daoContract: dao.networks[80001] ? dao.networks[80001].address : '',
+        ownableContract : ownable.networks[80001] ? ownable.networks[80001].address : ''
     }
 }
 const ConnectionContext = React.createContext();
@@ -32,6 +36,7 @@ export function ConnectionProvider(props) {
         accounts: [],
         crowdFundingContract: null,
         daoContract: null,
+        ownableContract: null,
         error: null,
     });
 
@@ -49,8 +54,12 @@ export function ConnectionProvider(props) {
                 dao.abi,
                 supportedNetworks[defaultChainId].daoContract
             )
+            const ownableContract = new web3.eth.Contract(
+                ownable.abi,
+                supportedNetworks[defaultChainId].ownableContract
+            )
 
-            setConnectionState({ ...connectionState, web3, crowdFundingContract, daoContract });
+            setConnectionState({ ...connectionState, web3, crowdFundingContract, daoContract, ownableContract });
         } catch (e) {
             console.log("useConnection : initiate Error -> ", e.toString());
             setConnectionState({ ...connectionState, error: e.toString() });
@@ -77,8 +86,13 @@ export function ConnectionProvider(props) {
                 dao.abi,
                 supportedNetworks[defaultChainId].daoContract
             )
+            
+            const ownableContract = new web3.eth.Contract(
+                ownable.abi,
+                supportedNetworks[defaultChainId].ownableContract
+            )
 
-            setConnectionState({ ...connectionState, web3, accounts, chainId, crowdFundingContract,daoContract });
+            setConnectionState({ ...connectionState, web3, accounts, chainId, crowdFundingContract,daoContract,ownableContract });
         } catch (e) {
             if (e.code === 4001) {
                 // eslint-disable-next-line 

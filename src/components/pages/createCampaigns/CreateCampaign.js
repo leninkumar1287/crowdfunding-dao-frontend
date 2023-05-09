@@ -50,17 +50,29 @@ function CreateCampaign(props) {
         setCampaign({ ...campaign, [name]: value })
     }
 
+    const StringToHex = (value) => {
+        return Web3.utils.stringToHex(value).padEnd(66, "0");
+    }
+
+    const hexToString = (value) => {
+        return Web3.utils.hexToString(value);
+    }
 
     const handleCampaignCreation = async () => {
-
+        console.log(StringToHex(campaign.companyName))
+        console.log(hexToString(StringToHex(campaign.companyName)))
+        console.log(StringToHex(campaign.title))
+        console.log(hexToString(StringToHex(campaign.title)))
+        console.log(StringToHex(campaign.description))
+        console.log(hexToString(StringToHex(campaign.description)))
         if (window.confirm("Do you want to create a new crowd funding campaign ?")) {
             setLoading(true);
             try {
                 let tokenValue = Web3.utils.toWei(campaign.pricePerToken, 'ether')
                 await crowdFundingContract.methods.createCampaign(
-                    campaign.companyName,
-                    campaign.title,
-                    campaign.description,
+                    StringToHex(campaign.companyName),
+                    StringToHex(campaign.title),
+                    StringToHex(campaign.description),
                     tokenValue,
                     campaign.tokenName,
                     Date.parse(campaign.deadLine) / 1000,

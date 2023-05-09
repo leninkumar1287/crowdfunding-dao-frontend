@@ -1,0 +1,1402 @@
+{
+  "contractName": "Modifiers",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "ownableAddress",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableAddressSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_companyName",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_title",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_description",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_pricePerToken",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "_tokenName",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "deadLine",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_target",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "_tokenSymbol",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_totalSupply",
+          "type": "uint256"
+        }
+      ],
+      "name": "campaignCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "contribution",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "contributer",
+          "type": "address"
+        }
+      ],
+      "name": "contribution",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "contribution",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "contributer",
+          "type": "address"
+        }
+      ],
+      "name": "refunded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "rejected",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "campaignCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ownable",
+      "outputs": [
+        {
+          "internalType": "contract OwnableContract",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "receipts",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "contributer",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokens",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "receivedEth",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"ownableAddress\",\"type\":\"address\"}],\"name\":\"OwnableAddressSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"}],\"name\":\"approved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_companyName\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_title\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_description\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_pricePerToken\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"_tokenName\",\"type\":\"string\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"deadLine\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_target\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"_tokenSymbol\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_totalSupply\",\"type\":\"uint256\"}],\"name\":\"campaignCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"contribution\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"contributer\",\"type\":\"address\"}],\"name\":\"contribution\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"contribution\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"contributer\",\"type\":\"address\"}],\"name\":\"refunded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"}],\"name\":\"rejected\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"campaignCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ownable\",\"outputs\":[{\"internalType\":\"contract OwnableContract\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"receipts\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"contributer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokens\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"receivedEth\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"events\":{\"approved(uint256)\":{\"notice\":\"approval of the campaign\"},\"campaignCreated(uint256,bytes32,bytes32,bytes32,uint256,string,uint256,uint256,string,uint256)\":{\"notice\":\"event for campaign creation\"},\"contribution(uint256,uint256,address)\":{\"notice\":\"event for contribution\"},\"refunded(uint256,uint256,address)\":{\"notice\":\"refund request against the contribution\"},\"rejected(uint256)\":{\"notice\":\"rejection of the campaign\"}},\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Modifiers.sol\":\"Modifiers\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0x4ffc0547c02ad22925310c585c0f166f8759e2648a09e9b489100c42f15dd98d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://15f52f51413a9de1ff191e2f6367c62178e1df7806d7880fe857a98b0b66253d\",\"dweb:/ipfs/QmaQG1fwfgUt5E9nu2cccFiV47B2V78MM1tCy1qB7n4MsH\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a376d3dda2cb70536c0a45c208b29b34ac560c4cb4f513a42079f96ba47d2dd\",\"dweb:/ipfs/QmZQg6gn1sUpM8wHzwNvSnihumUCAhxD119MpXeKp8B9s8\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"project:/contracts/ERC20/Contexts.sol\":{\"keccak256\":\"0xed63772636599a1230c6a3de5fac8328f7079f9892df947a91cf90b41bf4d680\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://06d6e2a215af46a884ec6118fafd0bfa39476003d8914a9f0d32004af2e04df0\",\"dweb:/ipfs/QmeqDqJtgncZ7ptwPK6abWZNfW2vxXctSANRsm19EiEUT2\"]},\"project:/contracts/ERC20/ERC20.sol\":{\"keccak256\":\"0x63ae980aed6cfe5e7bf0f636fd40e6660d49b96bf74edf658df167e846729410\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://50a1d29d1cac9ce57d1b5ad1c7c705eeb97b3ad7370bf3193e1333bb1ae000fa\",\"dweb:/ipfs/QmNbakcr8SJxjS6W1zdbEV9vdNo8GjPfSw3r3wtUEB9jCc\"]},\"project:/contracts/ERC20/Ownable.sol\":{\"keccak256\":\"0x0669609bbb81e26ff4286ab27d559b630e33be3508f03ecf64d30fdab7a97fab\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://77219665368a6b43f864c6ca0459c559e2f9dff048abb33b3c2630204ee666a0\",\"dweb:/ipfs/QmfRqSQ3VdcTrxEHSNTNQpmG2GaPjEDNfBPddVhQovmzXW\"]},\"project:/contracts/Modifiers.sol\":{\"keccak256\":\"0xa79dc5dade80532b747cb931cb3efcdde239fe22e66c9da05888502edb98ea3a\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://9cacefb1a1dea28b12039dc690e683565a833f0e9da47db61c7007c55f83f80c\",\"dweb:/ipfs/QmfGRDb3ePRZ8TSVmVH8eW5AJQzNGo4h6cMqMLJgA3eWNH\"]},\"project:/contracts/StateVariables.sol\":{\"keccak256\":\"0xb547cfe09da672039078bf525c52e49c5dd28261ea58ebf640e5699794f67a1d\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://fa550d099a25d2251716e0d52967fa78759459b69a98cf0adc35ce172565ec29\",\"dweb:/ipfs/QmTCeZnBzUyhNwGVQiaBWGbG9WXzGphEQXZ1JiJ5zoSvMW\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: SEE LICENSE IN LICENSE\npragma solidity^0.8;\n\nimport \"./ERC20/Ownable.sol\";\nimport \"./StateVariables.sol\";\n\nabstract contract Modifiers is StateVariables{\n    OwnableContract public ownable;\n\n     modifier onlyAdmin(){\n        require(\n            ownable.checkAdmin(msg.sender)\n        );\n        _;\n    }\n\n     modifier isApprovedOrRejectedAlready(uint256 campaignId) {\n        require(campaigns[campaignId].status != campainStatus.APPROVED,\"Already approved\");\n        require(campaigns[campaignId].status != campainStatus.REJECTED,\"Already rejected\");\n        _;\n    }\n\n    modifier isCampaignFound(uint256 campaignId) {\n        require(campaignCount >= campaignId && campaignId > 0,\"No campaign\");\n        _;\n    }\n\n    modifier isDeadLinePassed(uint256 campaignId) {\n        require(campaigns[campaignId].endDate >= block.timestamp,\"DeadLine passed\");\n        _;\n    }\n}",
+  "sourcePath": "/home/neosoft/projects/solidity/crowdFunding/crowdfunding-dao-solidity/contracts/Modifiers.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Modifiers.sol",
+    "exportedSymbols": {
+      "Context": [
+        711
+      ],
+      "Contexts": [
+        2180
+      ],
+      "ERC20": [
+        586
+      ],
+      "ERC20Token": [
+        2260
+      ],
+      "IERC20": [
+        664
+      ],
+      "IERC20Metadata": [
+        689
+      ],
+      "Modifiers": [
+        2593
+      ],
+      "OwnableContract": [
+        2509
+      ],
+      "StateVariables": [
+        2885
+      ]
+    },
+    "id": 2594,
+    "license": "SEE LICENSE IN LICENSE",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2511,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "51:20:10"
+      },
+      {
+        "absolutePath": "project:/contracts/ERC20/Ownable.sol",
+        "file": "./ERC20/Ownable.sol",
+        "id": 2512,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2594,
+        "sourceUnit": 2510,
+        "src": "73:29:10",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/StateVariables.sol",
+        "file": "./StateVariables.sol",
+        "id": 2513,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2594,
+        "sourceUnit": 2886,
+        "src": "103:30:10",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 2514,
+              "name": "StateVariables",
+              "nameLocations": [
+                "166:14:10"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 2885,
+              "src": "166:14:10"
+            },
+            "id": 2515,
+            "nodeType": "InheritanceSpecifier",
+            "src": "166:14:10"
+          }
+        ],
+        "canonicalName": "Modifiers",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2593,
+        "linearizedBaseContracts": [
+          2593,
+          2885
+        ],
+        "name": "Modifiers",
+        "nameLocation": "153:9:10",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "b38854be",
+            "id": 2518,
+            "mutability": "mutable",
+            "name": "ownable",
+            "nameLocation": "209:7:10",
+            "nodeType": "VariableDeclaration",
+            "scope": 2593,
+            "src": "186:30:10",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_OwnableContract_$2509",
+              "typeString": "contract OwnableContract"
+            },
+            "typeName": {
+              "id": 2517,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 2516,
+                "name": "OwnableContract",
+                "nameLocations": [
+                  "186:15:10"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 2509,
+                "src": "186:15:10"
+              },
+              "referencedDeclaration": 2509,
+              "src": "186:15:10",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_OwnableContract_$2509",
+                "typeString": "contract OwnableContract"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2529,
+              "nodeType": "Block",
+              "src": "244:89:10",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "expression": {
+                              "id": 2523,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4294967281,
+                              "src": "294:3:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 2524,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberLocation": "298:6:10",
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "src": "294:10:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "id": 2521,
+                            "name": "ownable",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2518,
+                            "src": "275:7:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_OwnableContract_$2509",
+                              "typeString": "contract OwnableContract"
+                            }
+                          },
+                          "id": 2522,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "283:10:10",
+                          "memberName": "checkAdmin",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2449,
+                          "src": "275:18:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
+                            "typeString": "function (address) view external returns (bool)"
+                          }
+                        },
+                        "id": 2525,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "275:30:10",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 2520,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "254:7:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 2526,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "254:61:10",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2527,
+                  "nodeType": "ExpressionStatement",
+                  "src": "254:61:10"
+                },
+                {
+                  "id": 2528,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "325:1:10"
+                }
+              ]
+            },
+            "id": 2530,
+            "name": "onlyAdmin",
+            "nameLocation": "233:9:10",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 2519,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "242:2:10"
+            },
+            "src": "224:109:10",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2557,
+              "nodeType": "Block",
+              "src": "397:202:10",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_campainStatus_$2863",
+                          "typeString": "enum StateVariables.campainStatus"
+                        },
+                        "id": 2541,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "baseExpression": {
+                              "id": 2535,
+                              "name": "campaigns",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2868,
+                              "src": "415:9:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Campaign_$2782_storage_$",
+                                "typeString": "mapping(uint256 => struct StateVariables.Campaign storage ref)"
+                              }
+                            },
+                            "id": 2537,
+                            "indexExpression": {
+                              "id": 2536,
+                              "name": "campaignId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2532,
+                              "src": "425:10:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "415:21:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Campaign_$2782_storage",
+                              "typeString": "struct StateVariables.Campaign storage ref"
+                            }
+                          },
+                          "id": 2538,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "437:6:10",
+                          "memberName": "status",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2779,
+                          "src": "415:28:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_campainStatus_$2863",
+                            "typeString": "enum StateVariables.campainStatus"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "expression": {
+                            "id": 2539,
+                            "name": "campainStatus",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2863,
+                            "src": "447:13:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_campainStatus_$2863_$",
+                              "typeString": "type(enum StateVariables.campainStatus)"
+                            }
+                          },
+                          "id": 2540,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberLocation": "461:8:10",
+                          "memberName": "APPROVED",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2860,
+                          "src": "447:22:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_campainStatus_$2863",
+                            "typeString": "enum StateVariables.campainStatus"
+                          }
+                        },
+                        "src": "415:54:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "416c726561647920617070726f766564",
+                        "id": 2542,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "470:18:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_16e598d16040adb87b6d85232208bb042b358c0adf26dfdb79ecea728dcc57ac",
+                          "typeString": "literal_string \"Already approved\""
+                        },
+                        "value": "Already approved"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_16e598d16040adb87b6d85232208bb042b358c0adf26dfdb79ecea728dcc57ac",
+                          "typeString": "literal_string \"Already approved\""
+                        }
+                      ],
+                      "id": 2534,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "407:7:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2543,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "407:82:10",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2544,
+                  "nodeType": "ExpressionStatement",
+                  "src": "407:82:10"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_campainStatus_$2863",
+                          "typeString": "enum StateVariables.campainStatus"
+                        },
+                        "id": 2552,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "baseExpression": {
+                              "id": 2546,
+                              "name": "campaigns",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2868,
+                              "src": "507:9:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Campaign_$2782_storage_$",
+                                "typeString": "mapping(uint256 => struct StateVariables.Campaign storage ref)"
+                              }
+                            },
+                            "id": 2548,
+                            "indexExpression": {
+                              "id": 2547,
+                              "name": "campaignId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2532,
+                              "src": "517:10:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "507:21:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Campaign_$2782_storage",
+                              "typeString": "struct StateVariables.Campaign storage ref"
+                            }
+                          },
+                          "id": 2549,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "529:6:10",
+                          "memberName": "status",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2779,
+                          "src": "507:28:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_campainStatus_$2863",
+                            "typeString": "enum StateVariables.campainStatus"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "expression": {
+                            "id": 2550,
+                            "name": "campainStatus",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2863,
+                            "src": "539:13:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_campainStatus_$2863_$",
+                              "typeString": "type(enum StateVariables.campainStatus)"
+                            }
+                          },
+                          "id": 2551,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberLocation": "553:8:10",
+                          "memberName": "REJECTED",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2861,
+                          "src": "539:22:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_campainStatus_$2863",
+                            "typeString": "enum StateVariables.campainStatus"
+                          }
+                        },
+                        "src": "507:54:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "416c72656164792072656a6563746564",
+                        "id": 2553,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "562:18:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_16307b13d4a45c1b950170be65b1caa18aedff3a241ff30ea012fd2a18b4f415",
+                          "typeString": "literal_string \"Already rejected\""
+                        },
+                        "value": "Already rejected"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_16307b13d4a45c1b950170be65b1caa18aedff3a241ff30ea012fd2a18b4f415",
+                          "typeString": "literal_string \"Already rejected\""
+                        }
+                      ],
+                      "id": 2545,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "499:7:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2554,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "499:82:10",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2555,
+                  "nodeType": "ExpressionStatement",
+                  "src": "499:82:10"
+                },
+                {
+                  "id": 2556,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "591:1:10"
+                }
+              ]
+            },
+            "id": 2558,
+            "name": "isApprovedOrRejectedAlready",
+            "nameLocation": "349:27:10",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 2533,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2532,
+                  "mutability": "mutable",
+                  "name": "campaignId",
+                  "nameLocation": "385:10:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2558,
+                  "src": "377:18:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2531,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "377:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "376:20:10"
+            },
+            "src": "340:259:10",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2574,
+              "nodeType": "Block",
+              "src": "650:96:10",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 2569,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 2565,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "id": 2563,
+                            "name": "campaignCount",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2748,
+                            "src": "668:13:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": ">=",
+                          "rightExpression": {
+                            "id": 2564,
+                            "name": "campaignId",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2560,
+                            "src": "685:10:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "668:27:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "&&",
+                        "rightExpression": {
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 2568,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "id": 2566,
+                            "name": "campaignId",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2560,
+                            "src": "699:10:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": ">",
+                          "rightExpression": {
+                            "hexValue": "30",
+                            "id": 2567,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "712:1:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "src": "699:14:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "src": "668:45:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "4e6f2063616d706169676e",
+                        "id": 2570,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "714:13:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_5e41b5ed16db76003f8b99c5cdbe189d1b73f63b2c0865644a3f47f08e151a39",
+                          "typeString": "literal_string \"No campaign\""
+                        },
+                        "value": "No campaign"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_5e41b5ed16db76003f8b99c5cdbe189d1b73f63b2c0865644a3f47f08e151a39",
+                          "typeString": "literal_string \"No campaign\""
+                        }
+                      ],
+                      "id": 2562,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "660:7:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2571,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "660:68:10",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2572,
+                  "nodeType": "ExpressionStatement",
+                  "src": "660:68:10"
+                },
+                {
+                  "id": 2573,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "738:1:10"
+                }
+              ]
+            },
+            "id": 2575,
+            "name": "isCampaignFound",
+            "nameLocation": "614:15:10",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 2561,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2560,
+                  "mutability": "mutable",
+                  "name": "campaignId",
+                  "nameLocation": "638:10:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2575,
+                  "src": "630:18:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2559,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "630:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "629:20:10"
+            },
+            "src": "605:141:10",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2591,
+              "nodeType": "Block",
+              "src": "798:103:10",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 2586,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "baseExpression": {
+                              "id": 2580,
+                              "name": "campaigns",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2868,
+                              "src": "816:9:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Campaign_$2782_storage_$",
+                                "typeString": "mapping(uint256 => struct StateVariables.Campaign storage ref)"
+                              }
+                            },
+                            "id": 2582,
+                            "indexExpression": {
+                              "id": 2581,
+                              "name": "campaignId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2577,
+                              "src": "826:10:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "816:21:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Campaign_$2782_storage",
+                              "typeString": "struct StateVariables.Campaign storage ref"
+                            }
+                          },
+                          "id": 2583,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "838:7:10",
+                          "memberName": "endDate",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2776,
+                          "src": "816:29:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">=",
+                        "rightExpression": {
+                          "expression": {
+                            "id": 2584,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967292,
+                            "src": "849:5:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 2585,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "855:9:10",
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "src": "849:15:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "816:48:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "446561644c696e6520706173736564",
+                        "id": 2587,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "865:17:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_4b41d4fdf21e7eb27f689d54747c0cb9f7e521f744f0c11e3fbb3cf7d6dd1e95",
+                          "typeString": "literal_string \"DeadLine passed\""
+                        },
+                        "value": "DeadLine passed"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_4b41d4fdf21e7eb27f689d54747c0cb9f7e521f744f0c11e3fbb3cf7d6dd1e95",
+                          "typeString": "literal_string \"DeadLine passed\""
+                        }
+                      ],
+                      "id": 2579,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "808:7:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2588,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "808:75:10",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2589,
+                  "nodeType": "ExpressionStatement",
+                  "src": "808:75:10"
+                },
+                {
+                  "id": 2590,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "893:1:10"
+                }
+              ]
+            },
+            "id": 2592,
+            "name": "isDeadLinePassed",
+            "nameLocation": "761:16:10",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 2578,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2577,
+                  "mutability": "mutable",
+                  "name": "campaignId",
+                  "nameLocation": "786:10:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2592,
+                  "src": "778:18:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2576,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "778:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "777:20:10"
+            },
+            "src": "752:149:10",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 2594,
+        "src": "135:768:10",
+        "usedErrors": []
+      }
+    ],
+    "src": "51:852:10"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.11",
+  "updatedAt": "2023-05-09T10:46:07.547Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "approved(uint256)": {
+        "notice": "approval of the campaign"
+      },
+      "campaignCreated(uint256,bytes32,bytes32,bytes32,uint256,string,uint256,uint256,string,uint256)": {
+        "notice": "event for campaign creation"
+      },
+      "contribution(uint256,uint256,address)": {
+        "notice": "event for contribution"
+      },
+      "refunded(uint256,uint256,address)": {
+        "notice": "refund request against the contribution"
+      },
+      "rejected(uint256)": {
+        "notice": "rejection of the campaign"
+      }
+    },
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

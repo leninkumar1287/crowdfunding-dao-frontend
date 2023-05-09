@@ -1,0 +1,2124 @@
+{
+  "contractName": "StateVariables",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "ownableAddress",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableAddressSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_companyName",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_title",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_description",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_pricePerToken",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "_tokenName",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "deadLine",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_target",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "_tokenSymbol",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_totalSupply",
+          "type": "uint256"
+        }
+      ],
+      "name": "campaignCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "contribution",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "contributer",
+          "type": "address"
+        }
+      ],
+      "name": "contribution",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "contribution",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "contributer",
+          "type": "address"
+        }
+      ],
+      "name": "refunded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "rejected",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "campaignCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "receipts",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "contributer",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokens",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "receivedEth",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"ownableAddress\",\"type\":\"address\"}],\"name\":\"OwnableAddressSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"}],\"name\":\"approved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_companyName\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_title\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_description\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_pricePerToken\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"_tokenName\",\"type\":\"string\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"deadLine\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_target\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"_tokenSymbol\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_totalSupply\",\"type\":\"uint256\"}],\"name\":\"campaignCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"contribution\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"contributer\",\"type\":\"address\"}],\"name\":\"contribution\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"contribution\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"contributer\",\"type\":\"address\"}],\"name\":\"refunded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"}],\"name\":\"rejected\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"campaignCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"receipts\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"contributer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokens\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"receivedEth\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"approved(uint256)\":{\"details\":\"this event is emitted when a campaign gets approve by the admin\",\"params\":{\"campaignId\":\"id of the campaign\"}},\"campaignCreated(uint256,bytes32,bytes32,bytes32,uint256,string,uint256,uint256,string,uint256)\":{\"details\":\"This event is emitted when a crowdfunding campaign is made.\",\"params\":{\"_companyName\":\"name of the company going to create the campaign\",\"_description\":\"detailed description of the campaign\",\"_pricePerToken\":\"price per token for eg : 10 NEO tokens == 100INR( here 1 neo is equal to 10 INR)\",\"_target\":\"goal of the crowd funding\",\"_title\":\"title of the camapaign\",\"_tokenName\":\"Name of the token launched by the user\",\"_tokenSymbol\":\"symbol of the token launched by the user\",\"_totalSupply\":\"total supply\",\"campaignId\":\"id of the campaign\",\"deadLine\":\"End date for the campaign to contribute,\"}},\"contribution(uint256,uint256,address)\":{\"details\":\"this event will emit when the contribution was maded by the users\",\"params\":{\"campaignId\":\"Id of the campaign\",\"contributer\":\"address of the contributer\",\"contribution\":\"amount of the contribution by the user\"}},\"refunded(uint256,uint256,address)\":{\"details\":\"This event will emit when refund is made\",\"params\":{\"campaignId\":\"Id of the campaign\",\"contributer\":\"address of the contributer\",\"contribution\":\"amount of the contribution by the user\"}},\"rejected(uint256)\":{\"details\":\"this event is emitted when a campaign gets reject by the admin\",\"params\":{\"campaignId\":\"id of the campaign\"}}},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"events\":{\"approved(uint256)\":{\"notice\":\"approval of the campaign\"},\"campaignCreated(uint256,bytes32,bytes32,bytes32,uint256,string,uint256,uint256,string,uint256)\":{\"notice\":\"event for campaign creation\"},\"contribution(uint256,uint256,address)\":{\"notice\":\"event for contribution\"},\"refunded(uint256,uint256,address)\":{\"notice\":\"refund request against the contribution\"},\"rejected(uint256)\":{\"notice\":\"rejection of the campaign\"}},\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/StateVariables.sol\":\"StateVariables\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0x4ffc0547c02ad22925310c585c0f166f8759e2648a09e9b489100c42f15dd98d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://15f52f51413a9de1ff191e2f6367c62178e1df7806d7880fe857a98b0b66253d\",\"dweb:/ipfs/QmaQG1fwfgUt5E9nu2cccFiV47B2V78MM1tCy1qB7n4MsH\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a376d3dda2cb70536c0a45c208b29b34ac560c4cb4f513a42079f96ba47d2dd\",\"dweb:/ipfs/QmZQg6gn1sUpM8wHzwNvSnihumUCAhxD119MpXeKp8B9s8\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"project:/contracts/ERC20/ERC20.sol\":{\"keccak256\":\"0x63ae980aed6cfe5e7bf0f636fd40e6660d49b96bf74edf658df167e846729410\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://50a1d29d1cac9ce57d1b5ad1c7c705eeb97b3ad7370bf3193e1333bb1ae000fa\",\"dweb:/ipfs/QmNbakcr8SJxjS6W1zdbEV9vdNo8GjPfSw3r3wtUEB9jCc\"]},\"project:/contracts/StateVariables.sol\":{\"keccak256\":\"0xb547cfe09da672039078bf525c52e49c5dd28261ea58ebf640e5699794f67a1d\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://fa550d099a25d2251716e0d52967fa78759459b69a98cf0adc35ce172565ec29\",\"dweb:/ipfs/QmTCeZnBzUyhNwGVQiaBWGbG9WXzGphEQXZ1JiJ5zoSvMW\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8;\n\nimport \"./ERC20/ERC20.sol\";\n\nabstract contract StateVariables {\n    ERC20Token private token;\n    uint256 public campaignCount;\n\n    struct Campaign {\n        // contract address\n        address contractAddress;\n        // Company Name\n        bytes32 companyName;\n        // Name of the token\n        string tokenName;\n        // Symbol of the token\n        string tokenSymbol;\n        // Id of the Campaign\n        uint campaignId;\n        // Creator of the campaign\n        address creator;\n        // Title of the campaign\n        bytes32 campaignTitle;\n        // Campaign Description\n        bytes32 campaignDescription;\n        // pricePer token fixed by the user\n        uint256 pricePerToken;\n        // required fund\n        uint256 target;\n        // total contribution received\n        uint256 contribution;\n        // totalHeld Balance\n        uint256 heldBalance;\n        // Campaign Start Date\n        uint256 startDate;\n        // Campaign End Date\n        uint256 endDate;\n        // Status of the campaign\n        campainStatus status;\n        // Withdraw status\n        bool withdrawalStatus;\n    }\n\n    struct Company {\n        // Name of the company\n        bytes32 companyName;\n        // Token symbol created by the company\n        string tokenSymbol;\n        // Token name created by the company\n        string tokenName;\n        // Contract address against the company's campaign\n        address contractAddress;\n        // Total supply\n        uint256 totalSupply;\n    }\n\n    struct ContributionReceipt {\n        // address of the contributer\n        address contributer;\n        // Id of the camapign\n        uint256 campaignId;\n        // Token of contribution\n        uint256 tokens;\n        // Eth value\n        uint256 receivedEth;\n    }\n\n    /**\n     * @notice event for campaign creation\n     * @dev This event is emitted when a crowdfunding campaign is made.\n     * @param campaignId id of the campaign\n     * @param _companyName name of the company going to create the campaign\n     * @param _title title of the camapaign\n     * @param _description detailed description of the campaign\n     * @param _pricePerToken price per token for eg : 10 NEO tokens == 100INR( here 1 neo is equal to 10 INR)\n     * @param _tokenName Name of the token launched by the user\n     * @param deadLine End date for the campaign to contribute,\n     * @param _target goal of the crowd funding\n     * @param _tokenSymbol symbol of the token launched by the user\n     * @param _totalSupply total supply\n     */\n\n    event campaignCreated(\n        uint256 indexed campaignId,\n        bytes32 _companyName,\n        bytes32 _title,\n        bytes32 _description,\n        uint256 indexed _pricePerToken,\n        string _tokenName,\n        uint256 indexed deadLine,\n        uint256 _target,\n        string _tokenSymbol,\n        uint256 _totalSupply\n    );\n\n    /**\n     * @notice approval of the campaign\n     * @dev this event is emitted when a campaign gets approve by the admin\n     * @param campaignId id of the campaign\n     */\n\n    event approved(uint256 indexed campaignId);\n\n    /**\n     * @notice rejection of the campaign\n     * @dev this event is emitted when a campaign gets reject by the admin\n     * @param campaignId id of the campaign\n     */\n\n    event rejected(uint256 indexed campaignId);\n\n    /**\n     * @notice event for contribution\n     * @dev this event will emit when the contribution was maded by the users\n     * @param campaignId Id of the campaign\n     * @param contribution amount of the contribution by the user\n     * @param contributer address of the contributer\n     */\n\n    event contribution(\n        uint256 indexed campaignId,\n        uint256 indexed contribution,\n        address indexed contributer\n    );\n\n    /**\n     * @notice refund request against the contribution\n     * @dev This event will emit when refund is made\n     * @param campaignId Id of the campaign\n     * @param contribution amount of the contribution by the user\n     * @param contributer address of the contributer\n     */\n\n    event refunded(\n        uint256 indexed campaignId,\n        uint256 indexed contribution,\n        address indexed contributer\n    );\n\n    event OwnableAddressSet(address sender, address ownableAddress);\n\n    enum campainStatus {\n        APPROVED,\n        REJECTED,\n        PENDING\n    }\n\n    // CAMPAIGNID => CAMPAINGS\n    mapping(uint256 => Campaign) campaigns;\n\n    //CONTRACT ADDRESS => COMPANY\n    mapping(address => Company) companies;\n\n    // CAMPAIGNID => CONTRIBUTER => RECEIPT\n    mapping(uint256 => mapping(address => ContributionReceipt)) public receipts;\n\n    // USER => BALANCE\n    mapping(address => uint256) balance;\n}\n",
+  "sourcePath": "/home/neosoft/projects/solidity/crowdFunding/crowdfunding-dao-solidity/contracts/StateVariables.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/StateVariables.sol",
+    "exportedSymbols": {
+      "Context": [
+        711
+      ],
+      "ERC20": [
+        586
+      ],
+      "ERC20Token": [
+        2260
+      ],
+      "IERC20": [
+        664
+      ],
+      "IERC20Metadata": [
+        689
+      ],
+      "StateVariables": [
+        2885
+      ]
+    },
+    "id": 2886,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2742,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:21:12"
+      },
+      {
+        "absolutePath": "project:/contracts/ERC20/ERC20.sol",
+        "file": "./ERC20/ERC20.sol",
+        "id": 2743,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2886,
+        "sourceUnit": 2261,
+        "src": "62:27:12",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "canonicalName": "StateVariables",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2885,
+        "linearizedBaseContracts": [
+          2885
+        ],
+        "name": "StateVariables",
+        "nameLocation": "109:14:12",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 2746,
+            "mutability": "mutable",
+            "name": "token",
+            "nameLocation": "149:5:12",
+            "nodeType": "VariableDeclaration",
+            "scope": 2885,
+            "src": "130:24:12",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ERC20Token_$2260",
+              "typeString": "contract ERC20Token"
+            },
+            "typeName": {
+              "id": 2745,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 2744,
+                "name": "ERC20Token",
+                "nameLocations": [
+                  "130:10:12"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 2260,
+                "src": "130:10:12"
+              },
+              "referencedDeclaration": 2260,
+              "src": "130:10:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC20Token_$2260",
+                "typeString": "contract ERC20Token"
+              }
+            },
+            "visibility": "private"
+          },
+          {
+            "constant": false,
+            "functionSelector": "7274e30d",
+            "id": 2748,
+            "mutability": "mutable",
+            "name": "campaignCount",
+            "nameLocation": "175:13:12",
+            "nodeType": "VariableDeclaration",
+            "scope": 2885,
+            "src": "160:28:12",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2747,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "160:7:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "StateVariables.Campaign",
+            "id": 2782,
+            "members": [
+              {
+                "constant": false,
+                "id": 2750,
+                "mutability": "mutable",
+                "name": "contractAddress",
+                "nameLocation": "257:15:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "249:23:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 2749,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "249:7:12",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2752,
+                "mutability": "mutable",
+                "name": "companyName",
+                "nameLocation": "314:11:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "306:19:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 2751,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "306:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2754,
+                "mutability": "mutable",
+                "name": "tokenName",
+                "nameLocation": "371:9:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "364:16:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 2753,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "364:6:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2756,
+                "mutability": "mutable",
+                "name": "tokenSymbol",
+                "nameLocation": "428:11:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "421:18:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 2755,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "421:6:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2758,
+                "mutability": "mutable",
+                "name": "campaignId",
+                "nameLocation": "484:10:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "479:15:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2757,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "479:4:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2760,
+                "mutability": "mutable",
+                "name": "creator",
+                "nameLocation": "547:7:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "539:15:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 2759,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "539:7:12",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2762,
+                "mutability": "mutable",
+                "name": "campaignTitle",
+                "nameLocation": "605:13:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "597:21:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 2761,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "597:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2764,
+                "mutability": "mutable",
+                "name": "campaignDescription",
+                "nameLocation": "668:19:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "660:27:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 2763,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "660:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2766,
+                "mutability": "mutable",
+                "name": "pricePerToken",
+                "nameLocation": "749:13:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "741:21:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2765,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "741:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2768,
+                "mutability": "mutable",
+                "name": "target",
+                "nameLocation": "805:6:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "797:14:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2767,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "797:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2770,
+                "mutability": "mutable",
+                "name": "contribution",
+                "nameLocation": "868:12:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "860:20:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2769,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "860:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2772,
+                "mutability": "mutable",
+                "name": "heldBalance",
+                "nameLocation": "927:11:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "919:19:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2771,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "919:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2774,
+                "mutability": "mutable",
+                "name": "startDate",
+                "nameLocation": "987:9:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "979:17:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2773,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "979:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2776,
+                "mutability": "mutable",
+                "name": "endDate",
+                "nameLocation": "1043:7:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "1035:15:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2775,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1035:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2779,
+                "mutability": "mutable",
+                "name": "status",
+                "nameLocation": "1108:6:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "1094:20:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_campainStatus_$2863",
+                  "typeString": "enum StateVariables.campainStatus"
+                },
+                "typeName": {
+                  "id": 2778,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 2777,
+                    "name": "campainStatus",
+                    "nameLocations": [
+                      "1094:13:12"
+                    ],
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 2863,
+                    "src": "1094:13:12"
+                  },
+                  "referencedDeclaration": 2863,
+                  "src": "1094:13:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_campainStatus_$2863",
+                    "typeString": "enum StateVariables.campainStatus"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2781,
+                "mutability": "mutable",
+                "name": "withdrawalStatus",
+                "nameLocation": "1156:16:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2782,
+                "src": "1151:21:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 2780,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1151:4:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Campaign",
+            "nameLocation": "202:8:12",
+            "nodeType": "StructDefinition",
+            "scope": 2885,
+            "src": "195:984:12",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "StateVariables.Company",
+            "id": 2793,
+            "members": [
+              {
+                "constant": false,
+                "id": 2784,
+                "mutability": "mutable",
+                "name": "companyName",
+                "nameLocation": "1249:11:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2793,
+                "src": "1241:19:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 2783,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1241:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2786,
+                "mutability": "mutable",
+                "name": "tokenSymbol",
+                "nameLocation": "1324:11:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2793,
+                "src": "1317:18:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 2785,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1317:6:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2788,
+                "mutability": "mutable",
+                "name": "tokenName",
+                "nameLocation": "1397:9:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2793,
+                "src": "1390:16:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 2787,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1390:6:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2790,
+                "mutability": "mutable",
+                "name": "contractAddress",
+                "nameLocation": "1483:15:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2793,
+                "src": "1475:23:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 2789,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1475:7:12",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2792,
+                "mutability": "mutable",
+                "name": "totalSupply",
+                "nameLocation": "1540:11:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2793,
+                "src": "1532:19:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2791,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1532:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Company",
+            "nameLocation": "1192:7:12",
+            "nodeType": "StructDefinition",
+            "scope": 2885,
+            "src": "1185:373:12",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "StateVariables.ContributionReceipt",
+            "id": 2802,
+            "members": [
+              {
+                "constant": false,
+                "id": 2795,
+                "mutability": "mutable",
+                "name": "contributer",
+                "nameLocation": "1647:11:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2802,
+                "src": "1639:19:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 2794,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1639:7:12",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2797,
+                "mutability": "mutable",
+                "name": "campaignId",
+                "nameLocation": "1706:10:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2802,
+                "src": "1698:18:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2796,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1698:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2799,
+                "mutability": "mutable",
+                "name": "tokens",
+                "nameLocation": "1767:6:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2802,
+                "src": "1759:14:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2798,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1759:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2801,
+                "mutability": "mutable",
+                "name": "receivedEth",
+                "nameLocation": "1812:11:12",
+                "nodeType": "VariableDeclaration",
+                "scope": 2802,
+                "src": "1804:19:12",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2800,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1804:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "ContributionReceipt",
+            "nameLocation": "1571:19:12",
+            "nodeType": "StructDefinition",
+            "scope": 2885,
+            "src": "1564:266:12",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2803,
+              "nodeType": "StructuredDocumentation",
+              "src": "1836:748:12",
+              "text": " @notice event for campaign creation\n @dev This event is emitted when a crowdfunding campaign is made.\n @param campaignId id of the campaign\n @param _companyName name of the company going to create the campaign\n @param _title title of the camapaign\n @param _description detailed description of the campaign\n @param _pricePerToken price per token for eg : 10 NEO tokens == 100INR( here 1 neo is equal to 10 INR)\n @param _tokenName Name of the token launched by the user\n @param deadLine End date for the campaign to contribute,\n @param _target goal of the crowd funding\n @param _tokenSymbol symbol of the token launched by the user\n @param _totalSupply total supply"
+            },
+            "eventSelector": "2caabeaff968a26d6b7712926ea1a5adfdce0e50200599f60a3b50c3d2d912fb",
+            "id": 2825,
+            "name": "campaignCreated",
+            "nameLocation": "2596:15:12",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2824,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2805,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "campaignId",
+                  "nameLocation": "2637:10:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2825,
+                  "src": "2621:26:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2804,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2621:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2807,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_companyName",
+                  "nameLocation": "2665:12:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2825,
+                  "src": "2657:20:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 2806,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2657:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2809,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_title",
+                  "nameLocation": "2695:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2825,
+                  "src": "2687:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 2808,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2687:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2811,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_description",
+                  "nameLocation": "2719:12:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2825,
+                  "src": "2711:20:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 2810,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2711:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2813,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_pricePerToken",
+                  "nameLocation": "2757:14:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2825,
+                  "src": "2741:30:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2812,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2741:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2815,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_tokenName",
+                  "nameLocation": "2788:10:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2825,
+                  "src": "2781:17:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2814,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2781:6:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2817,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "deadLine",
+                  "nameLocation": "2824:8:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2825,
+                  "src": "2808:24:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2816,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2808:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2819,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_target",
+                  "nameLocation": "2850:7:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2825,
+                  "src": "2842:15:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2818,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2842:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2821,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_tokenSymbol",
+                  "nameLocation": "2874:12:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2825,
+                  "src": "2867:19:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2820,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2867:6:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2823,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_totalSupply",
+                  "nameLocation": "2904:12:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2825,
+                  "src": "2896:20:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2822,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2896:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2611:311:12"
+            },
+            "src": "2590:333:12"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2826,
+              "nodeType": "StructuredDocumentation",
+              "src": "2929:171:12",
+              "text": " @notice approval of the campaign\n @dev this event is emitted when a campaign gets approve by the admin\n @param campaignId id of the campaign"
+            },
+            "eventSelector": "7d4061e68fab364906497bb959d95ad3f052a3978fed6ce9942a2b8f737aae54",
+            "id": 2830,
+            "name": "approved",
+            "nameLocation": "3112:8:12",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2829,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2828,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "campaignId",
+                  "nameLocation": "3137:10:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2830,
+                  "src": "3121:26:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2827,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3121:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3120:28:12"
+            },
+            "src": "3106:43:12"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2831,
+              "nodeType": "StructuredDocumentation",
+              "src": "3155:171:12",
+              "text": " @notice rejection of the campaign\n @dev this event is emitted when a campaign gets reject by the admin\n @param campaignId id of the campaign"
+            },
+            "eventSelector": "8c9878cc57a61b734d09368704b49894d5fb6b8f68f9cb352054ebe5b15a49e8",
+            "id": 2835,
+            "name": "rejected",
+            "nameLocation": "3338:8:12",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2834,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2833,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "campaignId",
+                  "nameLocation": "3363:10:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2835,
+                  "src": "3347:26:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2832,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3347:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3346:28:12"
+            },
+            "src": "3332:43:12"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2836,
+              "nodeType": "StructuredDocumentation",
+              "src": "3381:290:12",
+              "text": " @notice event for contribution\n @dev this event will emit when the contribution was maded by the users\n @param campaignId Id of the campaign\n @param contribution amount of the contribution by the user\n @param contributer address of the contributer"
+            },
+            "eventSelector": "c84cdef8ffed2c03b52b412accc6d5b91af9eb50c8480fdfddd078846470b2d0",
+            "id": 2844,
+            "name": "contribution",
+            "nameLocation": "3683:12:12",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2843,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2838,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "campaignId",
+                  "nameLocation": "3721:10:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2844,
+                  "src": "3705:26:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2837,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3705:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2840,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "contribution",
+                  "nameLocation": "3757:12:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2844,
+                  "src": "3741:28:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2839,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3741:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2842,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "contributer",
+                  "nameLocation": "3795:11:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2844,
+                  "src": "3779:27:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2841,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3779:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3695:117:12"
+            },
+            "src": "3677:136:12"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2845,
+              "nodeType": "StructuredDocumentation",
+              "src": "3819:282:12",
+              "text": " @notice refund request against the contribution\n @dev This event will emit when refund is made\n @param campaignId Id of the campaign\n @param contribution amount of the contribution by the user\n @param contributer address of the contributer"
+            },
+            "eventSelector": "05d2f1712ee9236ad359917514636b645f2a01960eefea50967f66d9cb443cde",
+            "id": 2853,
+            "name": "refunded",
+            "nameLocation": "4113:8:12",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2852,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2847,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "campaignId",
+                  "nameLocation": "4147:10:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2853,
+                  "src": "4131:26:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2846,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4131:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2849,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "contribution",
+                  "nameLocation": "4183:12:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2853,
+                  "src": "4167:28:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2848,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4167:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2851,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "contributer",
+                  "nameLocation": "4221:11:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2853,
+                  "src": "4205:27:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2850,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4205:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4121:117:12"
+            },
+            "src": "4107:132:12"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "b309a3e7f526e103b1b3df0dfa0a2e9784e4505551ab3a82c0bc7db7087699f2",
+            "id": 2859,
+            "name": "OwnableAddressSet",
+            "nameLocation": "4251:17:12",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2858,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2855,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "sender",
+                  "nameLocation": "4277:6:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2859,
+                  "src": "4269:14:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2854,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4269:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2857,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "ownableAddress",
+                  "nameLocation": "4293:14:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2859,
+                  "src": "4285:22:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2856,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4285:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4268:40:12"
+            },
+            "src": "4245:64:12"
+          },
+          {
+            "canonicalName": "StateVariables.campainStatus",
+            "id": 2863,
+            "members": [
+              {
+                "id": 2860,
+                "name": "APPROVED",
+                "nameLocation": "4344:8:12",
+                "nodeType": "EnumValue",
+                "src": "4344:8:12"
+              },
+              {
+                "id": 2861,
+                "name": "REJECTED",
+                "nameLocation": "4362:8:12",
+                "nodeType": "EnumValue",
+                "src": "4362:8:12"
+              },
+              {
+                "id": 2862,
+                "name": "PENDING",
+                "nameLocation": "4380:7:12",
+                "nodeType": "EnumValue",
+                "src": "4380:7:12"
+              }
+            ],
+            "name": "campainStatus",
+            "nameLocation": "4320:13:12",
+            "nodeType": "EnumDefinition",
+            "src": "4315:78:12"
+          },
+          {
+            "constant": false,
+            "id": 2868,
+            "mutability": "mutable",
+            "name": "campaigns",
+            "nameLocation": "4459:9:12",
+            "nodeType": "VariableDeclaration",
+            "scope": 2885,
+            "src": "4430:38:12",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Campaign_$2782_storage_$",
+              "typeString": "mapping(uint256 => struct StateVariables.Campaign)"
+            },
+            "typeName": {
+              "id": 2867,
+              "keyType": {
+                "id": 2864,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "4438:7:12",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "4430:28:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Campaign_$2782_storage_$",
+                "typeString": "mapping(uint256 => struct StateVariables.Campaign)"
+              },
+              "valueType": {
+                "id": 2866,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 2865,
+                  "name": "Campaign",
+                  "nameLocations": [
+                    "4449:8:12"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 2782,
+                  "src": "4449:8:12"
+                },
+                "referencedDeclaration": 2782,
+                "src": "4449:8:12",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Campaign_$2782_storage_ptr",
+                  "typeString": "struct StateVariables.Campaign"
+                }
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 2873,
+            "mutability": "mutable",
+            "name": "companies",
+            "nameLocation": "4537:9:12",
+            "nodeType": "VariableDeclaration",
+            "scope": 2885,
+            "src": "4509:37:12",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Company_$2793_storage_$",
+              "typeString": "mapping(address => struct StateVariables.Company)"
+            },
+            "typeName": {
+              "id": 2872,
+              "keyType": {
+                "id": 2869,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "4517:7:12",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "4509:27:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Company_$2793_storage_$",
+                "typeString": "mapping(address => struct StateVariables.Company)"
+              },
+              "valueType": {
+                "id": 2871,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 2870,
+                  "name": "Company",
+                  "nameLocations": [
+                    "4528:7:12"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 2793,
+                  "src": "4528:7:12"
+                },
+                "referencedDeclaration": 2793,
+                "src": "4528:7:12",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Company_$2793_storage_ptr",
+                  "typeString": "struct StateVariables.Company"
+                }
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "functionSelector": "4178b249",
+            "id": 2880,
+            "mutability": "mutable",
+            "name": "receipts",
+            "nameLocation": "4664:8:12",
+            "nodeType": "VariableDeclaration",
+            "scope": 2885,
+            "src": "4597:75:12",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_struct$_ContributionReceipt_$2802_storage_$_$",
+              "typeString": "mapping(uint256 => mapping(address => struct StateVariables.ContributionReceipt))"
+            },
+            "typeName": {
+              "id": 2879,
+              "keyType": {
+                "id": 2874,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "4605:7:12",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "4597:59:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_struct$_ContributionReceipt_$2802_storage_$_$",
+                "typeString": "mapping(uint256 => mapping(address => struct StateVariables.ContributionReceipt))"
+              },
+              "valueType": {
+                "id": 2878,
+                "keyType": {
+                  "id": 2875,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "4624:7:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "nodeType": "Mapping",
+                "src": "4616:39:12",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_ContributionReceipt_$2802_storage_$",
+                  "typeString": "mapping(address => struct StateVariables.ContributionReceipt)"
+                },
+                "valueType": {
+                  "id": 2877,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 2876,
+                    "name": "ContributionReceipt",
+                    "nameLocations": [
+                      "4635:19:12"
+                    ],
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 2802,
+                    "src": "4635:19:12"
+                  },
+                  "referencedDeclaration": 2802,
+                  "src": "4635:19:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ContributionReceipt_$2802_storage_ptr",
+                    "typeString": "struct StateVariables.ContributionReceipt"
+                  }
+                }
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 2884,
+            "mutability": "mutable",
+            "name": "balance",
+            "nameLocation": "4730:7:12",
+            "nodeType": "VariableDeclaration",
+            "scope": 2885,
+            "src": "4702:35:12",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+              "typeString": "mapping(address => uint256)"
+            },
+            "typeName": {
+              "id": 2883,
+              "keyType": {
+                "id": 2881,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "4710:7:12",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "4702:27:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                "typeString": "mapping(address => uint256)"
+              },
+              "valueType": {
+                "id": 2882,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "4721:7:12",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "scope": 2886,
+        "src": "91:4649:12",
+        "usedErrors": []
+      }
+    ],
+    "src": "39:4702:12"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.11",
+  "updatedAt": "2023-05-09T10:46:07.553Z",
+  "devdoc": {
+    "events": {
+      "approved(uint256)": {
+        "details": "this event is emitted when a campaign gets approve by the admin",
+        "params": {
+          "campaignId": "id of the campaign"
+        }
+      },
+      "campaignCreated(uint256,bytes32,bytes32,bytes32,uint256,string,uint256,uint256,string,uint256)": {
+        "details": "This event is emitted when a crowdfunding campaign is made.",
+        "params": {
+          "_companyName": "name of the company going to create the campaign",
+          "_description": "detailed description of the campaign",
+          "_pricePerToken": "price per token for eg : 10 NEO tokens == 100INR( here 1 neo is equal to 10 INR)",
+          "_target": "goal of the crowd funding",
+          "_title": "title of the camapaign",
+          "_tokenName": "Name of the token launched by the user",
+          "_tokenSymbol": "symbol of the token launched by the user",
+          "_totalSupply": "total supply",
+          "campaignId": "id of the campaign",
+          "deadLine": "End date for the campaign to contribute,"
+        }
+      },
+      "contribution(uint256,uint256,address)": {
+        "details": "this event will emit when the contribution was maded by the users",
+        "params": {
+          "campaignId": "Id of the campaign",
+          "contributer": "address of the contributer",
+          "contribution": "amount of the contribution by the user"
+        }
+      },
+      "refunded(uint256,uint256,address)": {
+        "details": "This event will emit when refund is made",
+        "params": {
+          "campaignId": "Id of the campaign",
+          "contributer": "address of the contributer",
+          "contribution": "amount of the contribution by the user"
+        }
+      },
+      "rejected(uint256)": {
+        "details": "this event is emitted when a campaign gets reject by the admin",
+        "params": {
+          "campaignId": "id of the campaign"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "approved(uint256)": {
+        "notice": "approval of the campaign"
+      },
+      "campaignCreated(uint256,bytes32,bytes32,bytes32,uint256,string,uint256,uint256,string,uint256)": {
+        "notice": "event for campaign creation"
+      },
+      "contribution(uint256,uint256,address)": {
+        "notice": "event for contribution"
+      },
+      "refunded(uint256,uint256,address)": {
+        "notice": "refund request against the contribution"
+      },
+      "rejected(uint256)": {
+        "notice": "rejection of the campaign"
+      }
+    },
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
