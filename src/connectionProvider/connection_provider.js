@@ -3,7 +3,7 @@ import Web3 from "web3";
 import crowdFunding from "../contracts/CrowdFunding.json";
 import dao from "../contracts/Dao.json"
 import ownable from "../contracts/OwnableContract.json"
-const defaultChainId = 80001;
+const defaultChainId = 1337;
 export const supportedNetworks = {
     1337: {
         name: 'Ganache Local',
@@ -11,8 +11,8 @@ export const supportedNetworks = {
         rpcURL: 'http://localhost:7545',
         crowdFundingContract: crowdFunding.networks[1337] ? crowdFunding.networks[1337].address : '',
         daoContract: dao.networks[1337] ? dao.networks[1337].address : '',
-        ownableContract : ownable.networks[1337] ? ownable.networks[1337].address : ''
-        
+        ownableContract: ownable.networks[1337] ? ownable.networks[1337].address : ''
+
     },
     80001: {
         name: 'Mumbai Polygon Testnet',
@@ -20,7 +20,7 @@ export const supportedNetworks = {
         rpcURL: 'https://rpc-mumbai.maticvigil.com/',
         crowdFundingContract: crowdFunding.networks[80001] ? crowdFunding.networks[80001].address : '',
         daoContract: dao.networks[80001] ? dao.networks[80001].address : '',
-        ownableContract : ownable.networks[80001] ? ownable.networks[80001].address : ''
+        ownableContract: ownable.networks[80001] ? ownable.networks[80001].address : ''
     }
 }
 const ConnectionContext = React.createContext();
@@ -39,6 +39,8 @@ export function ConnectionProvider(props) {
         ownableContract: null,
         error: null,
     });
+
+    const [owner, setOwner] = useState(false)
 
     const initiate = async () => {
         try {
@@ -86,13 +88,13 @@ export function ConnectionProvider(props) {
                 dao.abi,
                 supportedNetworks[defaultChainId].daoContract
             )
-            
+
             const ownableContract = new web3.eth.Contract(
                 ownable.abi,
                 supportedNetworks[defaultChainId].ownableContract
             )
 
-            setConnectionState({ ...connectionState, web3, accounts, chainId, crowdFundingContract,daoContract,ownableContract });
+            setConnectionState({ ...connectionState, web3, accounts, chainId, crowdFundingContract, daoContract, ownableContract });
         } catch (e) {
             if (e.code === 4001) {
                 // eslint-disable-next-line 
@@ -114,7 +116,27 @@ export function ConnectionProvider(props) {
         });
     }
 
-    useEffect(()=>{
+    const setOwnable = () => {
+        if (connectionState.accounts && connectionState.ownableContract) {
+            setTimeout(() => {
+                connectionState.crowdFundingContract.methods._ownableContract().call().then((res) => {
+                    if (res === "0x0000000000000000000000000000000000000000"){
+                        console.log("res: ",res)
+                        setOwner(true)
+                    } 
+                    else {
+                        connectionState.ownableContract.methods.owner().call().then(res => {
+                            console.log("res: ",res)
+                            if (res.toLowerCase() === connectionState.accounts[0].toLowerCase()) setOwner(true)
+                            else setOwner(false)
+                        }).catch(err => console.log(err))
+                    }
+                }).catch(err => console.log(err))
+            })
+        }
+    }
+
+    useEffect(() => {
         initiate()
 
         if (window.ethereum) {
@@ -131,11 +153,11 @@ export function ConnectionProvider(props) {
             });
         }
         // eslint-disable-next-line 
-    },[])
+    }, [])
 
     return (
         <>
-            <ConnectionContext.Provider value={{ connectionState, setConnectionState, connectWallet, DisconnectWallet }}>
+            <ConnectionContext.Provider value={{ connectionState, setConnectionState, connectWallet, DisconnectWallet, owner, setOwnable }}>
                 {props.children}
             </ConnectionContext.Provider>
         </>

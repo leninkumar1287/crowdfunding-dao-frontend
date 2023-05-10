@@ -46,20 +46,17 @@ function AddAdmin() {
                 if (isAdmin)
                     throw new Error("Given address is already an admin")
                 else {
-                    let admin = await ownableContract.methods.addWhitelistedAdmin(address).send({ from: accounts[0] })
-                    console.log("admin :", admin)
+                    await ownableContract.methods.addWhitelistedAdmin(address).send({ from: accounts[0] })
                     setLoading(false);
                     alert("admin promoted successfully")
-                    console.log("")
+                    navigate(-1)
                 }
             }
-
         } catch (e) {
             if (e.code === 4001) {
                 setError({ button: "Denied Metamask Transaction Signature" });
             } else {
-                console.log("error :", e.length)
-                setError({ button: e.message });
+                console.log("error :", e.message)
             }
         }
         setLoading(false);

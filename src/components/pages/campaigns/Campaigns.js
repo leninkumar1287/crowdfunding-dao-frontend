@@ -21,10 +21,6 @@ function Campaigns() {
 
     const [campaignsList, setcampaignsList] = useState([]);
 
-    const HexToString = (value) => {
-        return Web3.utils.hexToString(value);
-     }
-
     async function fetchData() {
         if (crowdFundingContract != null) {
             setLoading(true);
@@ -40,14 +36,7 @@ function Campaigns() {
         }
     }
 
-    // async function statement  () {
-    //     let eventsemitted = crowdFundingContract.events.campaignCreated()
-    //     console.log(" eventsemitted : ",eventsemitted)
-    // }
-
-
     useEffect(() => {
-        // statement();
         fetchData();
         // eslint-disable-next-line 
     }, [accounts, crowdFundingContract]);
@@ -65,7 +54,7 @@ function Campaigns() {
                 </button>
                 {
                 // "admin "== "accounts[0]"  
-                <button className="clickable" style={{background: "darkCyan"}} onClick={() => { navigate('/campaign/addAdmin/') }}> Manage Admins </button>
+                <button className="clickable" style={{background: "darkCyan"}} onClick={() => { navigate('/campaign/manageadmins/') }}> Manage Admins </button>
                 }
 
             </div>
@@ -76,7 +65,7 @@ function Campaigns() {
                 {campaignsList.map((campaigns, idx) => (
                     <div key={idx} className="p-list-tile" onClick={() => { navigate(`campaign/viewCampaign/${campaigns.campaignId}`) }}>
                         <div className="p-left">
-                            <p className="p-title">Campaign Title : {campaigns.campaignTitle}</p>
+                            <p className="p-title">Campaign Title : {Web3.utils.hexToString(campaigns.campaignTitle)}</p>
                             <p className="p-title">Available Token :{(campaigns.target - campaigns.contribution)}</p>
                             <p className="p-title">Creator : {campaigns.creator}</p>
                             <button className='clickable hr-flex-start' onClick={(event) => {

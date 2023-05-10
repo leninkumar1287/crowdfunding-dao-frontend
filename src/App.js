@@ -7,6 +7,11 @@ import CampainsView from "./components/pages/campaign_view_page/CampaignView.js"
 import CreateProposal from "./components/pages/create_proposal_page/CreateProposal";
 import ProposalPage from "./components/pages/proposal_page/ProposalPage";
 import VotingPages from "./components/pages/voting_page/VotingPage"
+import AdminAction from "./components/pages/manage_admin/AdminAction"
+import AddAdmin from "./components/pages/manage_admin/AddAdmin"
+import RemoveAdmin from "./components/pages/manage_admin/RemoveAdmin";
+import SetOwnable from "./components/pages/manage_admin/SetOwnable";
+
 function App() {
   const { connectionState } = useConnection();
 
@@ -27,6 +32,13 @@ function App() {
           <Route path="/campaign/:campaignIndex/createProposal/" element={<CreateProposal />} />
           <Route path="/campaign/:campaignIndex/proposals/" element={<ProposalPage />} />
           <Route path="/campaign/:campaignIndex/proposals/:proposalIndex" element={<VotingPages />} />
+          <Route path="/campaign/manageAdmins" element={<AdminAction />} />
+          <Route path="/campaign/manageAdmins/addAdmin" element={<AddAdmin />} />
+          <Route path="/campaign/manageAdmins/removeAdmin" element={<RemoveAdmin />} />
+          <Route path="/campaign/manageAdmins/setOwnableAddress" element={<SetOwnable />} />
+
+
+
 
         </Routes>
       </BrowserRouter>

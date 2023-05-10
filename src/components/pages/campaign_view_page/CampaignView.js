@@ -61,12 +61,11 @@ function CampaignView() {
                 let tokenNeed = (response.contribution === response.target)
                     ? 'target reached'
                     : response.target - response.contribution
-                    console.log("response L:",response)
                 setCampaign({
                     campaignId: index,
-                    company: response.companyName,
-                    title: response.campaignTitle,
-                    description: response.campaignDescription,
+                    company: Web3.utils.hexToString(response.companyName),
+                    title: Web3.utils.hexToString(response.campaignTitle),
+                    description: Web3.utils.hexToString(response.campaignDescription),
                     value: tokenValue,
                     Name: response.tokenName,
                     deadLine: response.endDate,
