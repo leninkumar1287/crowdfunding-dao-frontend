@@ -6472,8 +6472,8 @@
         }
       },
       "links": {},
-      "address": "0x97d5E38C5F4975803BE3BaE29aad9A2c37ACfDE1",
-      "transactionHash": "0x718ae66b12236bff363c173c0ed6c1e0e96fd7203fce88949260317221cb3e02"
+      "address": "0x6d08C5fc9055209Ea218dD2F8e9d0EBA58c78C99",
+      "transactionHash": "0x9b24f1197bb119585728ecb3ad4e316864a117887ca217a42760c3f3e72c0f1b"
     },
     "80001": {
       "events": {
@@ -6605,7 +6605,7 @@
     }
   },
   "schemaVersion": "3.4.11",
-  "updatedAt": "2023-05-10T11:44:56.197Z",
+  "updatedAt": "2023-05-10T12:39:57.788Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Contract module which provides a basic access control mechanism, where there is an account (an owner) that can be granted exclusive access to specific functions. By default, the owner account will be the one that deploys the contract. This can later be changed with {transferOwnership}.",

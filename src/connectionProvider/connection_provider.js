@@ -3,7 +3,7 @@ import Web3 from "web3";
 import crowdFunding from "../contracts/CrowdFunding.json";
 import dao from "../contracts/Dao.json"
 import ownable from "../contracts/OwnableContract.json"
-const defaultChainId = 1337;
+const defaultChainId = 80001;
 export const supportedNetworks = {
     1337: {
         name: 'Ganache Local',
@@ -121,7 +121,6 @@ export function ConnectionProvider(props) {
             setTimeout(() => {
                 connectionState.crowdFundingContract.methods._ownableContract().call().then((res) => {
                     if (res === "0x0000000000000000000000000000000000000000"){
-                        console.log("res: ",res)
                         setOwner(true)
                     } 
                     else {
